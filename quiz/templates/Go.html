@@ -1,0 +1,18 @@
+{%load static%}
+{% load i18n %}
+{%include "Head.html"%}
+<html>
+    <link rel="stylesheet" type="text/css" href="/static/css/Go.css"/>
+    {% csrf_token %}
+<body>
+        <div id="outercircle">
+            <div id="inner-circle-1">
+                <div id="inner-circle-2">
+                    <a  href="{% url 'login' %}">{%trans "Go to Login Page"%} <i class="arrow right"></i></a>
+                <br/>OR<br/>
+                <a id="a" href="{% url 'index' %}">{%trans "View Website as Guest"%}<i class="arrow right"></i></a>
+               </div> 
+            </div>
+        </div> 
+</body>
+</html>

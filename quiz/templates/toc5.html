@@ -1,0 +1,59 @@
+
+{% extends "toc2.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>5. Computability and Complexity</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'toc1' %}" class="aside-anchors">1. Introduction to Theory of Computation</a>
+        <a href="{% url 'toc2' %}" class="aside-anchors">2. Finite Automata</a>
+        <a href="{% url 'toc3' %}" class="aside-anchors">3. Context-Free Grammars</a>
+        <a href="{% url 'toc4' %}" class="aside-anchors">4. Turing Machines</a>
+        <a href="{% url 'toc5' %}" class="aside-anchors">5. Computability and Complexity</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            Computability theory, also known as recursion theory, is a branch of mathematical logic, computer science, and the theory of computation that originated in the 1930s with the study of computable functions and Turing degrees. The field has since been expanded to include the study of generalized computability and definability. In these areas, computability theory overlaps with proof theory and effective descriptive set theory.
+        </p>
+        <p>
+            Complexity theory is a central field of theoretical computer science. It studies the intrinsic complexity of computational tasks, as opposed to the extrinsic complexity of the algorithms that solve them. Complexity theory provides a theoretical framework for analyzing the difficulty of problems and understanding the inherent limitations of efficient computation.
+        </p>
+        <p>
+            The most well-known concept in complexity theory is the class of NP-complete problems, which are a set of decision problems that are both in NP and NP-hard. These problems are considered among the most difficult in NP, and many fundamental problems in computer science are NP-complete. Understanding the complexity of these problems has significant implications for cryptography, optimization, and algorithm design.
+        </p>
+        <p>
+            Complexity theory also studies other complexity classes, such as P, NP, PSPACE, and EXP, which characterize the efficiency of algorithms in terms of their time and space requirements. These classes provide a hierarchy of computational complexity, allowing researchers to classify problems based on their difficulty and develop algorithms that are efficient for certain classes of problems.
+        </p>
+        <p>
+            In addition to NP-completeness, another important concept in complexity theory is polynomial-time solvability. Problems that can be solved in polynomial time belong to the class P, while those that are NP-complete are believed to not have polynomial-time algorithms. This fundamental distinction between P and NP lies at the heart of the P vs. NP problem, one of the most famous open questions in computer science.
+        </p>
+        <p>
+            Beyond the traditional complexity classes, complexity theory also explores other aspects of computation, such as randomness and approximation. Randomized algorithms, for example, utilize randomization to improve the efficiency or correctness of algorithms, while approximation algorithms provide approximate solutions to optimization problems with guaranteed performance bounds.
+        </p>
+        <p>
+            Overall, the study of computability and complexity is fundamental to understanding the capabilities and limitations of computational systems. By investigating the inherent complexity of problems and the resources required to solve them, complexity theory enables the development of efficient algorithms and the exploration of the boundaries of computation.
+        </p>
+        <!-- Add more paragraphs as needed -->
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,36 @@
+{%extends 'dsa2.html'%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>3. Graphs</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>In computer science, <b>graphs</b> serve as a fundamental data structure for modeling relationships between entities. A graph comprises vertices, also known as nodes or points, and edges, which represent connections between these vertices. These connections can denote a variety of relationships, ranging from social connections in a network to physical connections in a transportation system. Graphs can be classified based on edge properties, with <b>directed graphs</b>, or digraphs, having edges with directions, indicating one-way connections between vertices, while <b>undirected graphs</b> lack directionality, representing symmetrical relationships.<br><br>The applications of graphs span across diverse domains; they are used in computer networking to model communication networks, where vertices signify devices and edges depict connections. Similarly, in social networks, vertices represent individuals, and edges signify relationships or interactions. Moreover, transportation systems utilize graphs to represent routes between locations, with vertices denoting junctions or stops and edges indicating roads or transit lines.<br><br>Graph traversal algorithms play a crucial role in analyzing graphs, facilitating tasks such as finding paths between vertices, detecting cycles, and determining connectivity. <b>Breadth-First Search</b> (BFS) and <b>Depth-First Search</b> (DFS) are common traversal algorithms employed for these purposes. Additionally, graphs can be represented using various data structures, including adjacency matrices, adjacency lists, and incidence matrices, each suited for different applications and operations. The choice of representation depends on factors such as the size of the graph, the efficiency of operations, and memory considerations.<br><br>In summary, graphs are indispensable in computer science, providing a powerful framework for modeling complex relationships and solving a wide range of problems across different domains.<br><br>Furthermore, the study of graphs extends beyond traditional computer science domains. In computational biology, graphs are used to represent genetic interactions and biological pathways. Similarly, in geographic information systems (GIS), graphs play a vital role in spatial analysis, route optimization, and urban planning. Furthermore, in artificial intelligence and machine learning, graphical models, such as Bayesian networks and Markov random fields, are employed for probabilistic reasoning and pattern recognition.<br><br>Moreover, graphs find applications in social sciences, economics, and linguistics, where they are used to model social networks, economic transactions, and language structures, respectively. The versatility and applicability of graphs make them a cornerstone of modern computational thinking, enabling researchers and practitioners to tackle increasingly complex problems in diverse fields.</p>
+    </main>
+</body>
+{% endblock %}

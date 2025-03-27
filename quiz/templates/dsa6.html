@@ -1,0 +1,36 @@
+{% extends 'dsa4.html' %}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>6. Arrays</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>Arrays are one of the most fundamental data structures in computer science, providing a contiguous block of memory to store elements of the same data type. They offer efficient access to individual elements based on their indices and support various operations such as insertion, deletion, and traversal.<br><br>One-dimensional arrays, also known as vectors, store elements in a linear sequence, allowing direct access to any element using its index. Multidimensional arrays extend this concept to higher dimensions, organizing elements in rows and columns, or even more complex arrangements.<br><br>Arrays find widespread use in diverse applications, including numerical computing, data processing, and algorithm design. In numerical computing, arrays facilitate the representation and manipulation of vectors, matrices, and tensors, enabling computations such as matrix multiplication, dot products, and element-wise operations.<br><br>Data processing tasks often involve storing and manipulating large datasets, such as sensor readings, image pixels, or text documents. Arrays provide an efficient mechanism for organizing and accessing such data, enabling tasks such as filtering, transformation, and analysis.<br><br>Algorithm design frequently relies on arrays to implement various data structures and algorithms. For example, arrays serve as the underlying storage for lists, stacks, queues, and heaps, enabling efficient implementations of operations such as insertion, deletion, and searching.<br><br>Despite their versatility and efficiency, arrays have certain limitations, including fixed size and lack of dynamic resizing. Once allocated, the size of an array remains constant, making it challenging to accommodate changes in data size dynamically. Additionally, accessing elements beyond the bounds of an array can lead to memory access violations and runtime errors.<br><br>In summary, <b>arrays</b> are a fundamental building block in computer science, providing efficient storage and access mechanisms for homogeneous data collections. By understanding their properties, applications, and limitations, developers can leverage <b>arrays</b> effectively in a wide range of software systems and algorithms.</p>
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>5.SQl Transactions</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'sql' %}" class="aside-anchors">1.Introduction to Databases</a>
+        <a href="{% url 'sql1' %}" class="aside-anchors">2.SQL Syntax and Datatypes</a>
+        <a href="{% url 'sql2 '%}" class="aside-anchors">3.SQL Operators</a>
+        <a href="{% url 'sql3' %}" class="aside-anchors">4.SQL Joins and Clauses</a>
+        <a href="{% url 'sql4' %}" class="aside-anchors">5.SQL Transactions</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            SQL transactions are sequences of SQL operations that are performed as a single unit of work. Transactions ensure data integrity by allowing multiple operations to be executed atomically. A transaction typically follows the ACID properties: Atomicity, Consistency, Isolation, and Durability.
+        </p>
+        
+        <h3>ACID Properties</h3>
+        <p>
+            <strong>Atomicity:</strong> Ensures that all operations within a transaction are completed successfully or none of them are executed.
+        </p>
+        <p>
+            <strong>Consistency:</strong> Ensures that the database remains in a consistent state before and after a transaction.
+        </p>
+        <p>
+            <strong>Isolation:</strong> Ensures that the intermediate state of a transaction is invisible to other transactions until it is committed.
+        </p>
+        <p>
+            <strong>Durability:</strong> Ensures that once a transaction is committed, its changes are permanent and survive system failures.
+        </p>
+        
+        <h3>Transaction Control Commands</h3>
+        <p>
+            SQL provides several commands to control transactions:
+        </p>
+        <p>
+            <strong>START TRANSACTION:</strong> Begins a new transaction.
+        </p>
+        <p>
+            <strong>COMMIT:</strong> Saves the changes made during the current transaction to the database.
+        </p>
+        <p>
+            <strong>ROLLBACK:</strong> Reverts the changes made during the current transaction and cancels the transaction.
+        </p>
+        <p>
+            <strong>SAVEPOINT:</strong> Sets a named point within a transaction to which you can later roll back.
+        </p>
+        
+        <h3>Example</h3>
+        <p>
+            Consider a banking application where a transfer of funds between two accounts needs to be executed atomically. This can be achieved using transactions:
+        </p>
+        <pre><code>
+    START TRANSACTION;
+    UPDATE accounts SET balance = balance - 100 WHERE account_id = 123;
+    UPDATE accounts SET balance = balance + 100 WHERE account_id = 456;
+    COMMIT;
+        </code></pre>
+        <p>
+            If any of the updates fail, the entire transaction will be rolled back, ensuring that the accounts remain in a consistent state.
+        </p>
+    </main>
+</body>
+{% endblock %}

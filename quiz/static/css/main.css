@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin-top: 20px;
+}
+h1{
+    padding-top: 10px;
+    text-align: center;
+}
+ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 5%;
+}
+
+
+aside {
+    float: left;
+    width: 20%;
+    position: fixed;
+    top: 145px;
+    padding: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    overflow-y: auto; /* Add overflow property to make it scrollable */
+    max-height: calc(100% - 110px); /* Set max-height to prevent it from overlapping the footer */
+    z-index: 1;
+    }
+    
+    /*hover over the text inside the contents box on the left*/
+    .aside-anchors {
+        text-decoration: none;
+        color:#0056b3;
+        font-size: large;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .aside-anchors:hover{
+        color:#a28be7;
+    }
+    
+    main {
+        margin-left: 20%;
+        padding: 20px;
+        margin-top: 30px; /* Adjust margin top to prevent overlap with fixed header */
+    }
+    .dsa {
+        float: right;
+        height: 60%;
+        width: 60%;
+    }
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/330/671/small/69_Up.jpg"); 
+    background-size: cover; 
+    color:black; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 50%; /* Rounded corners */
+    font-size: 30px; /* Increase font size */
+    height:10%;
+    width:5%;
+    padding-bottom:4%;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+
+.os {
+    float: right;
+    height: 60%;
+    width: 60%;
+}
+
+.sql {
+    float: right;
+    height: 60%;
+    width: 60%;
+}
+
+.dsa {
+    float: right;
+    height: 60%;
+    width: 60%;
+}
+
+.toc {
+    float: right;
+    height: 60%;
+    width: 60%;
+}
+
+.cn {
+    float: right;
+    height: 60%;
+    width: 60%;
+}

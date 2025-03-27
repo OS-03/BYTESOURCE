@@ -1,0 +1,9 @@
+csv/
+*sqlite3
+*.idea
+*.code
+*__pycache__
+.DS_Store
+# Environments
+.venv
+

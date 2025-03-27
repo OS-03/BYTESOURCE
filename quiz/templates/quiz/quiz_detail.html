@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{{ quiz.title }}
+{% endblock %}
+{% block content %}
+
+<style>
+  .head {
+    display: inline;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .cat {
+    display: inline;
+  }
+
+  .qtitle {
+    border: 2px solid white;
+    background-image: url('/static/img/topic.jpg');
+    background-attachment: fixed;
+    background-repeat: space;
+    background-size: cover;
+    height: 300px;
+    padding: 30px;
+    color: azure;
+    text-align: bottom;
+  }
+  .category{
+    background-image: url('/static/img/quiz.jpg');
+    background-attachment: fixed;
+    background-repeat: space;
+    background-size: cover;
+   border: 2px solid white;
+   padding: 20px;
+   
+  }
+  .cat{
+    font-size: 30px;
+    
+  }
+</style>
+
+<body>
+  <div class="qtitle">
+    <h1>Topic : {{ quiz.title }}</h1>
+  </div>
+  <div class="category">
+    <div class="head">{% trans "Category" %}</div>:<div class="cat">{{ quiz.category }}</div>
+  </div>
+  {% if quiz.single_attempt %}
+  <h4>{% trans "You will only get one attempt at this quiz" %}.</h4>
+  {% endif %}
+  <p>{{ quiz.description }}</p>
+  <p>
+    <a class="btn btn-outline-success" href="{% url 'quiz_question' quiz_name=quiz.url %}" role="button">{% trans "Start quiz" %}</a>
+
+    </a>
+  </p>
+</body>
+{% endblock %}

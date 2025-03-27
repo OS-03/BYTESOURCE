@@ -1,0 +1,49 @@
+
+{% extends "toc2.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>4. Turing Machines</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'toc1' %}" class="aside-anchors">1. Introduction to Theory of Computation</a>
+        <a href="{% url 'toc2' %}" class="aside-anchors">2. Finite Automata</a>
+        <a href="{% url 'toc3' %}" class="aside-anchors">3. Context-Free Grammars</a>
+        <a href="{% url 'toc4' %}" class="aside-anchors">4. Turing Machines</a>
+        <a href="{% url 'toc5' %}" class="aside-anchors">5. Computability and Complexity</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            Turing machines are theoretical devices that formalize the concept of computation. They consist of a tape divided into cells, a read/write head, and a set of states. At each step, the machine reads the symbol on the current cell, consults its transition function, and moves the head left or right, changes the symbol on the cell, and transitions to a new state based on the current state and the symbol read.
+        </p>
+        <p>
+            Turing machines can simulate any algorithm or compute any computable function. They are used in the theory of computation to prove the limits of what can be computed algorithmically and to study computability and complexity.
+        </p>
+        <p>
+            Alan Turing introduced Turing machines in 1936 as a formal model of computation. They are central to the Church-Turing thesis, which states that any function computable by an algorithm can be computed by a Turing machine.
+        </p>
+        <p>
+            Turing machines are used to define formal languages, such as the set of all strings that are accepted by a particular Turing machine. They are also used in complexity theory to study the time and space complexity of algorithms.
+        </p>
+    </main>
+</body>
+{% endblock %}

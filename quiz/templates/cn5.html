@@ -1,0 +1,62 @@
+
+{% extends "index.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>{% trans 'Computer Networks:' %}</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'cn1' %}" class="aside-anchors">1. Introduction to Computer Networks</a>
+        <a href="{% url 'cn2' %}" class="aside-anchors">2. Network Topologies</a>
+        <a href="{% url 'cn3' %}" class="aside-anchors">3. Network Protocols</a>
+        <a href="{% url 'cn4' %}" class="aside-anchors">4. OSI Model</a>
+        <a href="{% url 'cn5' %}" class="aside-anchors">5. TCP/IP Model</a>
+        <a href="{% url 'cn6' %}" class="aside-anchors">6. Network Security</a>
+    </aside>
+    <main>
+        <hr>
+        <h2>TCP/IP Model</h2>
+        <p>
+            The TCP/IP (Transmission Control Protocol/Internet Protocol) model is a concise version of the OSI model and is widely used in modern networking. It consists of four layers and is the foundation of the Internet.
+        </p>
+        <h3>1. Application Layer</h3>
+        <p>
+            The application layer corresponds to the OSI model's top three layers: application, presentation, and session. It provides network services directly to user applications and is responsible for tasks such as data encoding, encryption, and user authentication. Protocols like HTTP, SMTP, and FTP operate at this layer.
+        </p><image src="https://www.simplilearn.com/ice9/free_resources_article_thumb/TCP_Model_7.png" class="cn"><b>osi and tcp/ip models</b></image>
+        <h3>2. Transport Layer</h3>
+        <p>
+            The transport layer is similar to the OSI model's transport layer. It ensures reliable data transmission between hosts and handles issues such as segmentation, flow control, and error correction. TCP and UDP are the primary protocols at this layer.
+        </p>
+        <h3>3. Internet Layer</h3>
+        <p>
+            The internet layer corresponds to the OSI model's network layer. It is responsible for routing packets between networks and enables internetwork communication. The Internet Protocol (IP) operates at this layer, providing logical addressing and packet forwarding.
+        </p>
+        <h3>4. Link Layer</h3>
+        <p>
+            The link layer encompasses the OSI model's data link and physical layers. It handles the transmission of data frames between directly connected nodes and ensures reliable point-to-point communication over physical media. Ethernet, Wi-Fi, and PPP are common link layer technologies.
+        </p>
+        <p>
+            The TCP/IP model's simplicity and efficiency have made it the de facto standard for internet communication. It provides a flexible framework for building scalable and interoperable networks, making it indispensable for modern networking applications.
+        </p>
+    </main>
+</body>
+<button onclick="topFunction()" id="myBtn" title="Go to top"></button>
+
+{% endblock %}

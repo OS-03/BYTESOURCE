@@ -1,0 +1,66 @@
+
+{% extends "index.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>{% trans 'Computer Networks:' %}</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'cn1' %}" class="aside-anchors">1. Introduction to Computer Networks</a>
+        <a href="{% url 'cn2' %}" class="aside-anchors">2. Network Topologies</a>
+        <a href="{% url 'cn3' %}" class="aside-anchors">3. Network Protocols</a>
+        <a href="{% url 'cn4' %}" class="aside-anchors">4. OSI Model</a>
+        <a href="{% url 'cn5' %}" class="aside-anchors">5. TCP/IP Model</a>
+        <a href="{% url 'cn6' %}" class="aside-anchors">6. Network Security</a>
+    </aside>
+    <main>
+        <hr>
+        <h2>Network Security</h2>
+        <p>
+            Network security is a critical concern in today's digital age, where cyber threats are constantly evolving and becoming more sophisticated. Effective network security measures are essential for protecting sensitive information, ensuring business continuity, and maintaining user trust.
+        </p>
+        <p>
+            One of the fundamental principles of network security is the concept of defense in depth, which involves implementing multiple layers of security controls to mitigate risks and prevent unauthorized access. This approach helps organizations create a robust security posture by combining various technologies, policies, and procedures.
+        </p>
+        <p>
+            <image src="https://www.extnoc.com/learn/wp-content/uploads/2022/02/Network-Security.jpg" class="cn"><b>osi and tcp/ip models</b></image>
+            Network security encompasses a wide range of techniques and technologies, including access control mechanisms, encryption, firewalls, intrusion detection systems (IDS), intrusion prevention systems (IPS), antivirus software, and security monitoring tools.
+        </p>
+        <p>
+            Access control mechanisms, such as user authentication and authorization, play a crucial role in preventing unauthorized users from accessing sensitive resources. By implementing strong authentication methods, such as multi-factor authentication (MFA) and role-based access control (RBAC), organizations can enforce granular access controls and reduce the risk of data breaches.
+        </p>
+        <p>
+            Encryption is another essential component of network security, particularly for protecting data in transit and at rest. By encrypting sensitive information using cryptographic algorithms, organizations can ensure that data remains confidential and secure, even if intercepted by unauthorized parties.
+        </p>
+        <p>
+            Firewalls are an integral part of network security infrastructure, serving as a barrier between trusted internal networks and untrusted external networks. They monitor and control incoming and outgoing traffic based on predefined rules, blocking potentially malicious traffic and preventing unauthorized access to network resources.
+        </p>
+        <p>
+            Intrusion detection systems (IDS) and intrusion prevention systems (IPS) are security technologies designed to detect and respond to malicious activities and security breaches in real-time. IDS monitors network traffic for suspicious patterns or anomalies, while IPS takes proactive measures to block or mitigate identified threats.
+        </p>
+        <p>
+            Continuous monitoring and threat intelligence are essential aspects of effective network security. By staying informed about emerging threats and vulnerabilities, organizations can proactively identify and address security risks before they are exploited by attackers.
+        </p>
+        <p>
+            In conclusion, network security is a multifaceted discipline that requires a proactive approach to protect against evolving cyber threats. By implementing robust security measures, staying vigilant, and regularly updating security policies and procedures, organizations can mitigate risks and safeguard their critical assets in today's interconnected world.
+        </p>
+    </main>
+</body>
+{% endblock %}

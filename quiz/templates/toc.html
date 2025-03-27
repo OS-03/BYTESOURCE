@@ -1,0 +1,69 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>Theory of Computation:</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'toc1' %}" class="aside-anchors">1. Introduction to Theory of Computation</a>
+        <a href="{% url 'toc2' %}" class="aside-anchors">2. Finite Automata</a>
+        <a href="{% url 'toc3' %}" class="aside-anchors">3. Context-Free Grammars</a>
+        <a href="{% url 'toc4' %}" class="aside-anchors">4. Turing Machines</a>
+        <a href="{% url 'toc5' %}" class="aside-anchors">5. Computability and Complexity</a>
+    </aside>
+    <main>
+        <hr>
+        <p><h3>Introduction to Theory of Computation:</h3><br> 
+            The theory of computation is a field in computer science that explores the fundamental properties and limitations of computation. It encompasses various mathematical models and formal languages to study the nature of algorithms, computability, and complexity.
+            <br><br>
+            <b>Purpose of Theory of Computation:</b><br>
+            The primary purpose of the theory of computation is to understand the fundamental principles underlying computation. It provides a theoretical framework for analyzing and categorizing problems based on their computational complexity and solvability.
+            <br><br>
+            <b>Key Concepts in Theory of Computation:</b><br>
+            <b>Automata Theory:</b>
+            <br>
+            Automata theory studies abstract machines and computational models capable of performing computations. It includes finite automata, pushdown automata, and Turing machines, which serve as foundational models for understanding computation.
+            <br><b>Formal Languages:</b>
+            <br>
+            Formal languages are sets of strings defined over a finite alphabet according to specific rules and grammar. They are used to represent the syntax and semantics of programming languages and communication protocols.
+            <br><b>Computability:</b>
+            <br>
+            Computability theory investigates the set of problems that can be solved algorithmically. It explores the concept of Turing computability and decidability, determining which problems are solvable by algorithms and which are not.
+            <br><b>Complexity Theory:</b>
+            <br>
+            Complexity theory studies the resources required to solve computational problems, such as time and space. It classifies problems into different complexity classes based on their computational complexity and hardness.
+            <br><br>
+            <b>Models in Theory of Computation:</b><br>
+            <b>Finite Automata:</b>
+            <br>
+            Finite automata are abstract machines with a finite set of states and transitions between states based on input symbols. They are used to recognize regular languages and patterns in strings.
+            <br><b>Context-Free Grammars:</b>
+            <br>
+            Context-free grammars define the syntax of context-free languages using production rules and non-terminal symbols. They are employed in parsing and generating structured data such as programming code and natural language sentences.
+            <br><b>Turing Machines:</b>
+            <br>
+            Turing machines are theoretical devices capable of simulating any algorithmic computation. They consist of an infinite tape, a read/write head, and a finite set of states, providing a formal model of computation.
+            <br><br>
+            <b>Conclusion:</b><br>
+            The theory of computation is a fundamental discipline that underpins various areas of computer science and mathematics. It provides essential insights into the nature and limitations of computation, shaping the development of algorithms, programming languages, and computing systems.</p>
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<style>
+    h1{
+        margin-left: 50px;
+    }
+</style>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>5.Special Purpose Operating Systems</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'os1' %}" class="aside-anchors">1.Process Management</a>
+        <a href="{% url 'os2' %}" class="aside-anchors">2.Process Coordination</a>
+        <a href="{% url 'os3' %}" class="aside-anchors">3.Memory Management</a>
+        <a href="{% url 'os4' %}" class="aside-anchors">4.Storage Management</a>
+        <a href="{% url 'os5' %}"class="aside-anchors">5.Special Purpose Operating Systems</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            Special purpose operating systems are designed to serve specific functions or applications, often tailored to the requirements of particular industries or devices. Unlike general-purpose operating systems like Windows or Linux, special purpose operating systems are optimized for a specific set of tasks and may lack some features commonly found in mainstream operating systems.<br><br>
+            <b>Embedded Systems:</b> Many special purpose operating systems are used in embedded systems, which are computer systems designed to perform a dedicated function within a larger system or device. Examples of embedded systems include smart appliances, industrial automation systems, and automotive control systems. Embedded operating systems are typically lightweight and optimized for real-time performance and resource efficiency.<br><br>
+            <b>Real-time Operating Systems (RTOS):</b> RTOS are special purpose operating systems designed to execute tasks with precise timing requirements. RTOS are commonly used in applications where timely and predictable responses to external events are critical, such as industrial control systems, robotics, and avionics. RTOS provide mechanisms for task scheduling, inter-task communication, and interrupt handling to meet real-time constraints.<br><br>
+            <b>Mobile Operating Systems:</b> Mobile operating systems are special purpose operating systems designed for smartphones, tablets, and other mobile devices. Examples of mobile operating systems include Android, iOS, and Windows Phone. Mobile operating systems are optimized for touch-based input, battery efficiency, and connectivity, and provide app ecosystems for downloading and installing third-party applications.<br><br>
+            <b>Embedded Linux:</b> Linux is often used as a base for developing special purpose operating systems for embedded systems and IoT (Internet of Things) devices. Embedded Linux distributions provide a customizable and open-source platform for building specialized operating systems tailored to the requirements of embedded applications.<br><br>
+            Special purpose operating systems play a crucial role in powering a wide range of devices and systems across various industries, providing tailored solutions for specific use cases and enabling innovation in emerging technologies.
+        </p>
+    </main>
+</body>
+{% endblock %}

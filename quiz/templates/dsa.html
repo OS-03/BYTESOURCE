@@ -1,0 +1,75 @@
+
+{% extends "index.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>{% trans "Data Structures and algorithms" %}</h1> <!-- Fixed header -->
+    <hr/>
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <p><h3>Data Structures:</h3>
+
+            Data structures are ways of organizing and storing data in a computer so that it can be accessed and modified efficiently. They provide a means to manage and manipulate collections of data, enabling various operations such as insertion, deletion, search, and traversal. Different data structures are designed for different purposes, and the choice of data structure can significantly impact the performance of algorithms.
+            
+            Common data structures include:
+            <br>
+            <b>Arrays:</b> A collection of elements stored at contiguous memory locations. Arrays offer constant-time access to individual elements but may have limitations in terms of resizing and inserting/deleting elements.
+            <br>
+            <image src="https://media.geeksforgeeks.org/wp-content/uploads/20220520182504/ClassificationofDataStructure-660x347.jpg" class="dsa">data structures</image>
+            <b>Linked Lists:</b> A sequence of nodes, where each node contains a data element and a reference (pointer) to the next node in the sequence. Linked lists allow for dynamic memory allocation and efficient insertion/deletion of elements but may have slower access times compared to arrays.
+            <br>
+            <b>Stacks:</b> A Last-In-First-Out (LIFO) data structure that supports two main operations: push (inserting an element onto the top of the stack) and pop (removing the top element from the stack). Stacks are often used for function call management, expression evaluation, and backtracking algorithms.
+            <br>
+            <b>Queues:</b> A First-In-First-Out (FIFO) data structure that supports two main operations: enqueue (inserting an element at the rear of the queue) and dequeue (removing the front element from the queue). Queues are commonly used in scheduling, buffering, and breadth-first search algorithms.
+            <br>
+            <b>Trees:</b> A hierarchical data structure consisting of nodes connected by edges, where each node has a parent node and zero or more child nodes. Trees are used to represent hierarchical relationships and are the basis for various advanced data structures such as binary trees, binary search trees, and AVL trees.
+            <br>
+            <b>Graphs:</b> A collection of nodes (vertices) connected by edges, where edges may have weights or other attributes. Graphs are used to model relationships between entities and are fundamental to many algorithms in network analysis, pathfinding, and optimization.
+            <br><br><hr><br>
+            <h3>Algorithms:</h3><br>
+            
+            Algorithms are step-by-step procedures or sets of rules for solving specific problems or performing computational tasks. They define the sequence of operations to be performed on input data to produce the desired output. Algorithms can be analyzed based on their correctness, efficiency, and complexity.
+            
+            Common algorithmic techniques include:
+            <br>
+            <b>Searching:</b> Finding a specific element in a collection of data. Common search algorithms include linear search, binary search (for sorted arrays), and depth-first search (for graphs).
+            <br>
+            <b>Sorting:</b> Arranging elements in a specified order. Common sorting algorithms include bubble sort, insertion sort, selection sort, merge sort, quick sort, and heap sort.
+            <br>
+            <b>Graph Traversal:</b> Visiting all nodes or vertices in a graph in a systematic manner. Common graph traversal algorithms include breadth-first search (BFS) and depth-first search (DFS).
+            <br>
+            <b>Dynamic Programming:</b> Breaking down a complex problem into simpler subproblems and solving each subproblem only once, storing the solutions to subproblems in a table to avoid redundant computations.
+            <br>
+            <b>Greedy Algorithms:</b> Making locally optimal choices at each step with the hope of finding a global optimum. Greedy algorithms are often used for optimization problems where making the best choice at each step leads to an optimal solution overall.
+            <br>
+            <b>Divide and Conquer:</b> Breaking down a problem into smaller subproblems, solving each subproblem independently, and combining the solutions to obtain the final solution. Binary search and merge sort are examples of divide and conquer algorithms.
+            <br>
+            Understanding data structures and algorithms is crucial for writing efficient and scalable code, as well as for solving complex computational problems. Mastery of these concepts is essential for success in computer science and programming.</p>
+           </main>
+        </body>
+{% endblock %}

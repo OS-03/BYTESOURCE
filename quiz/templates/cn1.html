@@ -1,0 +1,74 @@
+{% extends "cn.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>{% trans 'Computer Networks:' %}</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'cn1' %}" class="aside-anchors">1. Introduction to Computer Networks</a>
+        <a href="{% url 'cn2' %}" class="aside-anchors">2. Network Topologies</a>
+        <a href="{% url 'cn3' %}" class="aside-anchors">3. Network Protocols</a>
+        <a href="{% url 'cn4' %}" class="aside-anchors">4. OSI Model</a>
+        <a href="{% url 'cn5' %}" class="aside-anchors">5. TCP/IP Model</a>
+        <a href="{% url 'cn6' %}" class="aside-anchors">6. Network Security</a>
+    </aside>
+    <main>
+        <hr>
+        <h2>Introduction to Computer Networks</h2>
+        <p>
+            A computer network is a collection of interconnected devices or nodes that can communicate with each other and share resources. These devices can include computers, servers, routers, switches, and more. Computer networks are essential for facilitating communication, sharing data and resources, and enabling collaboration among users.
+        </p>
+        <p>
+            Computer networks can be classified based on their geographical scope. Local Area Networks (LANs) typically cover a small area, such as a single building or campus, and are used for connecting devices within a limited area. Wide Area Networks (WANs) span large geographic distances and connect devices across different locations or even countries.
+        </p>
+        <p>
+            Additionally, networks can be categorized based on their functional relationships. In a client-server network architecture, devices called clients request services or resources from servers, which provide these services or resources. In a peer-to-peer network, all devices have equal status and can act as both clients and servers, sharing resources directly with each other.
+        </p>
+        <img src="https://study.com/cimages/videopreview/videopreview-full/how-star-bus-ring-and-mesh-topology-connect-computer-networks-in-organizations1_101949.jpg" class="cn" alt="Network Diagram">
+        <h3>Network Topologies</h3>
+        <p>
+            Network topology refers to the physical or logical layout of devices and connections in a network. Different network topologies have different advantages and disadvantages in terms of cost, scalability, and reliability.
+        </p>
+        <p>
+            Some common network topologies include:
+        <br>
+                <strong>Bus Topology:</strong> All devices are connected to a single communication line, known as a bus. Data is transmitted along the bus and can be received by all devices on the network.<br>
+                <strong>Star Topology:</strong> All devices are connected to a central hub or switch. Data must pass through the hub or switch to reach other devices.<br>
+                <strong>Ring Topology:</strong> Each device is connected to two other devices, forming a closed loop. Data travels in one direction around the ring.<br>
+                <strong>Mesh Topology:</strong> Each device is connected to every other device in the network. This topology offers redundancy and fault tolerance but can be expensive to implement.<br>
+        </p>
+    
+        <h3>Network Protocols</h3>
+        <p>
+            Network protocols are rules and conventions that govern how data is transmitted and received over a network. They define the format and structure of data packets, as well as the procedures for error detection, correction, and security.
+        </p>
+        <p>
+            Some common network protocols include:
+            <br>
+                <strong>TCP/IP:</strong> Transmission Control Protocol/Internet Protocol is the foundational protocol suite of the Internet. It provides reliable, connection-oriented communication between devices.<br>
+                <strong>HTTP:</strong> Hypertext Transfer Protocol is used for transmitting web pages and other web resources over the Internet.<br>
+                <strong>FTP:</strong> File Transfer Protocol is used for transferring files between devices on a network.<br>
+                <strong>SMTP:</strong> Simple Mail Transfer Protocol is used for sending and receiving email messages over the Internet.<br>
+            
+        </p>
+    </main>
+</body>
+<button onclick="topFunction()" id="myBtn" title="Go to top"></button>
+{% endblock %}

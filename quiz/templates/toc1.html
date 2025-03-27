@@ -1,0 +1,68 @@
+
+{% extends "toc.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>1. Introduction to Theory of Computation</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'toc1' %}" class="aside-anchors">1. Introduction to Theory of Computation</a>
+        <a href="{% url 'toc2' %}" class="aside-anchors">2. Finite Automata</a>
+        <a href="{% url 'toc3' %}" class="aside-anchors">3. Context-Free Grammars</a>
+        <a href="{% url 'toc4' %}" class="aside-anchors">4. Turing Machines</a>
+        <a href="{% url 'toc5' %}" class="aside-anchors">5. Computability and Complexity</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            The theory of computation is a branch of computer science that deals with the study of algorithms, computational machines, and computational problems. It explores the fundamental capabilities and limitations of computers, aiming to understand what can and cannot be computed efficiently.
+        </p>
+        
+        <h3>Topics Covered:</h3>
+        <ol>
+            <li>Finite Automata</li>
+            <li>Context-Free Grammars</li>
+            <li>Turing Machines</li>
+            <li>Computability and Complexity</li>
+        </ol>
+        
+        <h3>Finite Automata</h3>
+        <p>
+            Finite automata are abstract machines that can be in one of a finite number of states at any given time. They are used to recognize patterns within input sequences and are fundamental to the theory of computation.
+        </p>
+        
+        <h3>Context-Free Grammars</h3>
+        <p>
+            Context-free grammars are formal rules used for generating strings in a formal language. They are widely used in the study of formal languages, syntax analysis in compilers, and natural language processing.
+        </p>
+        
+        <h3>Turing Machines</h3>
+        <p>
+            Turing machines are theoretical models of computation that can simulate the logic of any algorithmic process. They consist of a finite set of states, an infinite tape, and a read/write head that can move left or right along the tape.
+        </p>
+        
+        <h3>Computability and Complexity</h3>
+        <p>
+            Computability theory investigates the existence and nature of algorithms, while complexity theory focuses on the resources required to solve computational problems. It deals with classifying problems based on their inherent difficulty and studying efficient algorithms for solving them.
+        </p>
+    </main>
+    </body>
+    {% endblock %}

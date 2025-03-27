@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>{% trans 'Computer Networks:' %}</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'cn1' %}" class="aside-anchors">1. Introduction to Computer Networks</a>
+        <a href="{% url 'cn2' %}" class="aside-anchors">2. Network Topologies</a>
+        <a href="{% url 'cn3' %}" class="aside-anchors">3. Network Protocols</a>
+        <a href="{% url 'cn4' %}" class="aside-anchors">4. OSI Model</a>
+        <a href="{% url 'cn5' %}" class="aside-anchors">5. TCP/IP Model</a>
+        <a href="{% url 'cn6' %}" class="aside-anchors">6. Network Security</a>
+    </aside>
+    <main>
+        <hr>
+        <p><h2>Computer Networks:</h2><br> 
+            <b>Computer networks</b> are an essential part of modern computing, allowing devices to communicate and share resources with each other. A computer network is a collection of interconnected devices, such as computers, servers, printers, and routers, that can exchange data and collaborate on tasks.
+            <br><br>
+            <b>Purpose of Computer Networks:</b><br>
+            The primary purpose of computer networks is to facilitate communication and resource sharing among connected devices. Networks enable users to access information, share files, communicate via email or messaging platforms, and access shared resources such as printers and storage devices.
+            <br><br>
+            <b>Key Components of Computer Networks:</b><br>
+            <image src="https://www.interviewbit.com/blog/wp-content/uploads/2022/02/TCPIP-764x1024.png" class="cn"><b>osi and tcp/ip models</b></image>
+            <b>Nodes:</b>
+            <br>
+            Nodes are the devices connected to the network, such as computers, servers, printers, and routers.
+            <br><b>Network Links:</b>
+            <br>
+            Network links are the physical or wireless connections that allow data to flow between nodes. These links can include Ethernet cables, fiber optic cables, or wireless connections.
+            <br><b>Network Protocols:</b>
+            <br>
+            Network protocols are a set of rules and conventions that govern how data is transmitted and received over the network. Common protocols include TCP/IP, HTTP, FTP, and DNS.
+            <br><br>
+            <b>Types of Computer Networks:</b><br>
+            <b>Local Area Network (LAN):</b>
+            <br>
+            A LAN is a network that covers a small geographical area, such as a home, office, or school campus. LANs are typically used for connecting devices within a single building or campus.
+            <br><b>Wide Area Network (WAN):</b>
+            <br>
+            A WAN is a network that spans a large geographical area, such as a city, country, or even multiple countries. WANs are used to connect LANs over long distances, often using public or private communication links.
+            <br><b>Wireless Network:</b>
+            <br>
+            A wireless network uses wireless communication technologies, such as Wi-Fi, Bluetooth, or cellular networks, to connect devices without the need for physical cables.
+            <br><br>
+            <b>Network Topologies:</b><br>
+            Network topology refers to the physical or logical arrangement of nodes and links in a network. Common network topologies include bus, star, ring, mesh, and hybrid topologies.
+            <br><br>
+            <b>OSI Model:</b><br>
+            The OSI (Open Systems Interconnection) model is a conceptual framework that standardizes the communication functions of a telecommunication or computing system into seven abstraction layers. These layers include Physical, Data Link, Network, Transport, Session, Presentation, and Application layers.
+            <br><br>
+            <b>TCP/IP Model:</b><br>
+            The TCP/IP (Transmission Control Protocol/Internet Protocol) model is a widely used networking model that defines a set of protocols for communication between computers on a network. It consists of four layers: Application, Transport, Internet, and Link layers.
+            <br><br>
+            <b>Network Security:</b><br>
+            Network security involves protecting the integrity, confidentiality, and availability of data transmitted over the network. It includes measures such as encryption, firewalls, intrusion detection systems, and access control mechanisms to prevent unauthorized access and data breaches.
+            <br><br>
+            <b>Conclusion:</b><br>
+            Computer networks play a crucial role in modern computing, enabling communication, collaboration, and resource sharing among connected devices. Understanding the basics of computer networks is essential for both users and IT professionals to effectively utilize and manage network resources.</p>
+          </main>
+        </body>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"></button>
+        {% endblock %}

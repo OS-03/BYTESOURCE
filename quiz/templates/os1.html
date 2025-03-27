@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>1.Process Management</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'os1' %}" class="aside-anchors">1.Process Management</a>
+        <a href="{% url 'os2' %}" class="aside-anchors">2.Process Coordination</a>
+        <a href="{% url 'os3' %}" class="aside-anchors">3.Memory Management</a>
+        <a href="{% url 'os4' %}" class="aside-anchors">4.Storage Management</a>
+        <a href="{% url 'os5' %}"class="aside-anchors">5.Special Purpose Operating Systems</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            Process management is a crucial aspect of operating systems that involves the management and coordination of processes within a computing environment. A process can be defined as an instance of a program in execution. The operating system is responsible for various tasks related to process management, including process creation, scheduling, synchronization, and termination.<br><br>
+            <b>Process Creation:</b> The operating system creates processes in response to user requests or system events. This involves allocating resources such as memory, CPU time, and I/O devices to the new process. Processes can be created dynamically during runtime or as part of the system bootstrapping process.<br><br>
+            <b>Process Scheduling:</b> Process scheduling determines the order in which processes are executed on the CPU. It aims to optimize system performance by maximizing CPU utilization, minimizing response time, and ensuring fairness among processes. Various scheduling algorithms, such as First-Come, First-Served (FCFS), Shortest Job Next (SJN), and Round Robin, are used to manage process execution.<br><br>
+            <b>Process Synchronization:</b> In a multi-process environment, processes may need to synchronize their execution to avoid conflicts and ensure consistency. This is achieved through synchronization primitives such as locks, semaphores, and monitors. Synchronization mechanisms prevent race conditions and ensure that critical sections of code are executed atomically.<br><br>
+            <b>Process Termination:</b> When a process completes its execution or is terminated due to an error, the operating system is responsible for reclaiming the resources allocated to the process and updating its status. This involves releasing memory, closing open files, and notifying parent processes about the termination. Proper process termination ensures efficient resource utilization and prevents resource leaks.<br><br>
+            <b>Process States:</b> Processes in an operating system typically go through several states during their lifecycle, including new, ready, running, waiting, and terminated. The operating system maintains information about each process's state and transitions between states based on events such as I/O completion, timer interrupts, and scheduling decisions. Understanding process states is essential for effective process management and resource allocation.<br><br>
+            Effective process management is essential for the efficient operation of modern computing systems, ensuring that resources are utilized effectively and tasks are completed in a timely manner. Operating systems employ sophisticated process management techniques to optimize system performance, enhance responsiveness, and provide a reliable computing environment for users.
+        </p>
+    </main>
+</body>
+{% endblock %}

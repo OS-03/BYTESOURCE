@@ -1,0 +1,68 @@
+{%extends 'dsa.html'%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>1. Stacks, Queues, and Linked Lists</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <hr>
+        <br><br>
+        <p>
+            In computer science, <strong>stacks</strong>, <strong>queues</strong>, and <strong>linked lists</strong> are fundamental data structures used to organize and manipulate data efficiently. Each of these data structures has its unique characteristics and applications in various fields of computing.
+        </p>
+        <h3>1. Stacks</h3>
+        <p>
+            A <strong>stack</strong> is a linear data structure that follows the <strong>Last In, First Out (LIFO)</strong> principle, meaning the last element added to the stack is the first one to be removed. Think of it as a stack of plates in a cafeteria, where you can only add or remove plates from the top. Stacks are commonly used in programming languages for function calls, expression evaluation, and backtracking algorithms.
+        </p>
+        <p>
+            Stacks support two primary operations: <strong>push</strong>, which adds an element to the top of the stack, and <strong>pop</strong>, which removes the top element from the stack.
+        </p>
+        <p>
+            For example, when you call a function in a program, the function's return address and local variables are pushed onto the stack. When the function finishes executing, these elements are popped off the stack.
+        </p>
+        <h3>2. Queues</h3>
+        <p>
+            A <strong>queue</strong> is a linear data structure that follows the <strong>First In, First Out (FIFO)</strong> principle, meaning the first element added to the queue is the first one to be removed. Queues are widely used in operating systems for process scheduling, task management, and network packet handling.
+        </p>
+        <p>
+            Queues support two primary operations: <strong>enqueue</strong>, which adds an element to the rear of the queue, and <strong>dequeue</strong>, which removes the front element from the queue.
+        </p>
+        <p>
+            For instance, when multiple processes are competing for CPU time, a scheduler uses a queue to prioritize and allocate CPU resources to different processes based on their priority levels.
+        </p>
+        <h3>3. Linked Lists</h3>
+        <p>
+            A <strong>linked list</strong> is a linear data structure consisting of a sequence of elements called nodes, where each node contains a data element and a reference (pointer) to the next node in the sequence. Unlike arrays, linked lists do not have a fixed size and can dynamically allocate memory as needed.
+        </p>
+        <p>
+            Linked lists support efficient insertion and deletion operations, as elements can be easily added or removed by adjusting the pointers between nodes. Linked lists come in various forms, such as <strong>singly linked lists</strong>, <strong>doubly linked lists</strong>, and <strong>circular linked lists</strong>, each offering different traversal and manipulation capabilities.
+        </p>
+        <p>
+            Overall, stacks, queues, and linked lists are essential building blocks in algorithm design and data structure implementation, providing flexible and efficient solutions for a wide range of computational problems.
+        </p>
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>3.SQL Operators</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'sql'%}" class="aside-anchors">1.Introduction to Databases</a>
+        <a href="{% url 'sql1'%}" class="aside-anchors">2.SQL Syntax and Datatypes</a>
+        <a href="{% url 'sql2'%}" class="aside-anchors">3.SQL Operators</a>
+        <a href="{% url 'sql3'%}" class="aside-anchors">4.SQL Joins and Clauses</a>
+        <a href="{% url 'sql4'%}" class="aside-anchors">5.SQL Transactions</a>
+    </aside>
+    <main>
+        <hr>
+        <p>
+            SQL operators are symbols that allow you to perform operations on one or more operands to produce a result. These operators are used in SQL queries to manipulate data in databases.
+        </p>
+        
+        <h3>Types of SQL Operators</h3>
+        <p>
+            There are several types of SQL operators, including arithmetic operators, comparison operators, logical operators, and bitwise operators.
+        </p>
+        
+        <h4>1. Arithmetic Operators</h4>
+        <p>
+            Arithmetic operators are used to perform mathematical operations on numeric operands. They include addition (+), subtraction (-), multiplication (*), division (/), and modulus (%).
+        </p>
+        
+        <h4>2. Comparison Operators</h4>
+        <p>
+            Comparison operators are used to compare values in SQL queries. They include equal to (=), not equal to (!=), greater than (>), less than (<), greater than or equal to (>=), and less than or equal to (<=).
+        </p>
+        
+        <h4>3. Logical Operators</h4>
+        <p>
+            Logical operators are used to combine multiple conditions in SQL queries. They include AND, OR, and NOT.
+        </p>
+        
+        <h4>4. Bitwise Operators</h4>
+        <p>
+            Bitwise operators are used to perform operations at the bit level. They include AND (&), OR (|), XOR (^), NOT (~), and bit shift operators (<< and >>).
+        </p>
+        
+        <h3>Examples</h3>
+        <p>
+            Here are some examples of using SQL operators in queries:
+            <br><br>
+            <strong>Arithmetic Operator Example:</strong> SELECT salary * 1.1 AS increased_salary FROM employees;
+            <br><br>
+            <strong>Comparison Operator Example:</strong> SELECT * FROM products WHERE price > 100;
+            <br><br>
+            <strong>Logical Operator Example:</strong> SELECT * FROM customers WHERE age > 18 AND city = 'New York';
+        </p>
+    </main>
+</body>
+{% endblock %}

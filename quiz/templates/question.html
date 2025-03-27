@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load i18n%}
+
+
+
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
+
+{% block content %}
+<style>
+	div{
+		justify-content: center;
+		text-align: center;
+	}
+	.nsb{
+    border: 1px solid #fff;
+    width: 80%;
+    padding: 17px ;
+    color: #fff;
+    background-color: #a28be7;
+    cursor: pointer;
+  }
+
+ .nsb:hover {
+  background:linear-gradient(to right,#a28be7, #42d8dd);
+  color: #fff;
+  }
+  .No{
+	padding: 2%;
+  }
+</style>
+{% if previous.answers %}
+
+  <p class="muted"><small>{% trans "The previous question" %}:</small></p>
+  <p>{{ previous.previous_question }}</p>
+
+  {% if previous.previous_outcome %}
+	<div class="alert alert-success">
+  {% else %}
+	<div class="alert alert-warning">
+  {% endif %}
+  	  <p><Big>
+		{% trans "Your answer was" %} </Big>
+		<strong>
+		  {{ previous.previous_outcome|yesno:"correct,incorrect" }}
+		</strong>
+	  </p>
+
+	</div>
+
+	{% include 'correct_answer.html' %}
+
+	<p><strong>{% trans "Explanation" %}:</strong></p>
+	<div class="well " style="background-color: #fcf8e3;">
+	  <p>{{ previous.previous_question.explanation }}</p>
+	</div>
+
+	<hr>
+
+{% endif %}
+
+<br />
+
+{% if question %}
+
+{% if progress %}
+<div class="No" style="float:right;">
+{% trans "Question" %} {{ progress.0|add:1 }} {% trans "of" %} {{ progress.1 }}
+</div>
+{% endif %}
+
+<p>
+  <Big class="No" >{% trans "Question category :" %}<strong>{{question.category}}</strong></Big>
+
+</p>
+
+<p class="No">{{ question.content }}</p>
+
+{% if question.figure %}
+    <img src="{{ question.figure.url }}" alt="{{ question.content }}" />
+{% endif %}
+
+<form action="" method="POST">{% csrf_token %}
+  <input type=hidden name="question_id" value="{{ question.id }}">
+  <ul class="list-group">
+
+	{% for answer in form.answers %}
+	  <li class="list-group-item">
+	    {{ answer }}
+	  </li>
+	{% endfor %}
+
+  </ul>
+  <div>
+    {% if progress.0|add:1 == progress.1 %}
+	<button class="nsb" type="submit">{% trans "Submit" %}</button>
+    {% else %}
+
+		<button class="nsb" type="submit">{% trans "Next" %}</button>
+	</div>
+    {% endif %}
+</form>
+
+{% endif %}
+<hr>
+
+
+{% endblock %}

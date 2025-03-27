@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>1.Introduction to Databases</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'sql'%}" class="aside-anchors">1.Introduction to Databases</a>
+        <a href="{% url 'sql1'%}" class="aside-anchors">2.SQL Syntax and Datatypes</a>
+        <a href="{% url 'sql2'%}" class="aside-anchors">3.SQL Operators</a>
+        <a href="{% url 'sql3'%}" class="aside-anchors">4.SQL Joins and Clauses</a>
+        <a href="{% url 'sql4'%}" class="aside-anchors">5.SQL Transactions</a>
+    </aside>
+    <main>
+        <hr><br>
+        <p>
+            A database is an organized collection of data, generally stored and accessed electronically from a computer system. Databases can be classified into different types based on the data model they use, such as relational databases, NoSQL databases, object-oriented databases, and more.
+        </p>
+        <p>
+            The primary purpose of a database is to provide a systematic way to store and retrieve data efficiently. Databases are widely used in various applications, including but not limited to business, education, healthcare, finance, and research.
+        </p>
+        <p>
+            Databases are designed to ensure data integrity, security, and reliability. They provide mechanisms for data validation, concurrency control, and backup and recovery. The structure of a database is defined by its schema, which specifies the tables, columns, relationships, and constraints.
+        </p>
+        <p>
+            SQL (Structured Query Language) is the standard language for managing and manipulating relational databases. SQL allows users to perform various operations such as creating tables, inserting data, querying data, updating records, and deleting records.
+        </p>
+        <p>
+            In this introductory course on databases, we will explore the fundamentals of database management, including data modeling, normalization, SQL syntax, and more. By the end of this course, you will have a solid understanding of how databases work and how to effectively use them in real-world applications.
+        </p>
+    </main>
+</body>
+{% endblock %}

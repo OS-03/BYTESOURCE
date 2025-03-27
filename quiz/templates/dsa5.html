@@ -1,0 +1,36 @@
+{% extends 'dsa4.html' %}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>5. Hashing</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>Hashing is a fundamental technique in computer science used to efficiently retrieve and store data in large datasets. At its core, hashing involves mapping data of arbitrary size to fixed-size values, typically integers, known as hash codes or hash values. These hash codes are then used as indexes or keys to access data stored in data structures such as hash tables.<br><br>One of the key advantages of hashing is its constant-time complexity for basic operations such as insertion, deletion, and retrieval, making it highly efficient for tasks involving large datasets. Hashing is widely used in various applications, including database indexing, password authentication, and data compression.<br><br>In database indexing, hashing is employed to quickly locate records based on their keys or attributes. By hashing key values, databases can efficiently determine the location of records without the need for sequential searches, resulting in improved query performance and faster data retrieval.<br><br>Password authentication systems often utilize hashing to securely store and verify user passwords. Instead of storing passwords directly, systems store hashed versions of passwords, making it computationally infeasible for attackers to reverse-engineer the original passwords from the hash values. Common hashing algorithms used for password hashing include MD5, SHA-1, and bcrypt.<br><br>Hashing is also used in data compression algorithms to generate unique identifiers, or fingerprints, for data blocks. By comparing these fingerprints, compression algorithms can identify duplicate data blocks and store them only once, reducing storage space and improving data transfer speeds.<br><br>Despite its efficiency and versatility, hashing has certain limitations and considerations. Hash collisions, where different inputs produce the same hash code, can occur, leading to potential data loss or performance degradation. Additionally, the choice of hashing algorithm and hash function parameters can impact the distribution of hash values and overall performance.<br><br>In conclusion, hashing is a powerful technique in computer science, offering efficient data retrieval and storage mechanisms for various applications. By understanding its principles and considerations, developers can leverage hashing effectively to optimize performance and enhance security in their software systems.</p>
+    </main>
+</body>
+{% endblock %}

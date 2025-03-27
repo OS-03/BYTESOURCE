@@ -1,0 +1,38 @@
+{% extends 'dsa3.html'%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>4. Searching and Sorting</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>In the realm of computer science, <b>searching and sorting algorithms</b> play a pivotal role in various applications, from databases to information retrieval systems. Searching algorithms are employed to locate a specific element within a collection of data, while sorting algorithms arrange the elements in a specific order, such as numerical or lexicographical. These algorithms are fundamental building blocks in the development of efficient software systems, enabling faster data processing and retrieval.<br><br>Search algorithms come in different flavors, each suited to particular scenarios and data structures. For instance, <b>linear search</b> traverses the elements sequentially, making it suitable for unsorted arrays, while <b>binary search</b> operates on sorted arrays, significantly reducing the search time by halving the search space at each step. Other advanced search algorithms, such as <b>hash tables</b> and <b>binary search trees</b>, offer even faster search capabilities by leveraging specialized data structures.<br><br>Sorting algorithms, on the other hand, vary in their approach and efficiency. <b>Bubble sort</b>, despite its simplicity, is inefficient for large datasets, whereas more sophisticated algorithms like <b>quicksort</b> and <b>merge sort</b> exhibit superior performance, often employed in real-world applications where efficiency is paramount. Additionally, <b>radix sort</b> and <b>heap sort</b> provide alternative solutions for specialized scenarios, showcasing the diversity and adaptability of sorting techniques in computer science.</p>
+        <p><b>Search Algorithms:</b><br>Search algorithms are essential in various scenarios, ranging from simple text searches in documents to complex database queries. One of the most common search algorithms is the <b>linear search</b>, which iterates through each element in a collection until the target element is found or the end of the collection is reached. While linear search is straightforward, it is not efficient for large datasets, especially when the target element is near the end.<br><br>For sorted collections, <b>binary search</b> offers a more efficient alternative. This algorithm repeatedly divides the search interval in half until the target element is found or the interval is empty. Binary search is significantly faster than linear search for large datasets, as it eliminates half of the remaining elements in each iteration, resulting in a time complexity of O(log n), where n is the number of elements in the collection.</p>
+        <p><b>Sorting Algorithms:</b><br>Sorting algorithms are crucial for organizing data in various applications, such as data analysis, database management, and information retrieval. One of the simplest sorting algorithms is <b>bubble sort</b>, which repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. While bubble sort is easy to understand, it is not efficient for large datasets, as it has a worst-case time complexity of O(n^2).<br><br>More efficient sorting algorithms include <b>quicksort</b> and <b>merge sort</b>. Quicksort, a divide-and-conquer algorithm, partitions the list into two sublists based on a pivot element and recursively sorts each sublist. Merge sort divides the list into smaller sublists, sorts them independently, and then merges them back together. Both quicksort and merge sort have an average time complexity of O(n log n), making them suitable for large datasets.</p>
+    </main>
+</body>
+{% endblock %}

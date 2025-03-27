@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>3.memory management</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'os1' %}" class="aside-anchors">1.Process Management</a>
+        <a href="{% url 'os2' %}" class="aside-anchors">2.Process Coordination</a>
+        <a href="{% url 'os3' %}" class="aside-anchors">3.Memory Management</a>
+        <a href="{% url 'os4' %}" class="aside-anchors">4.Storage Management</a>
+        <a href="{% url 'os5' %}"class="aside-anchors">5.Special Purpose Operating Systems</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            Memory management is a critical component of operating systems responsible for managing the computer's memory resources efficiently. It involves various tasks such as allocation, deallocation, and optimization to ensure that processes have access to the memory they need while minimizing fragmentation and maximizing system performance.<br><br>
+            <b>Memory Allocation:</b> Memory allocation involves assigning memory blocks to processes based on their memory requirements. Operating systems use different allocation strategies such as contiguous allocation, non-contiguous allocation, and dynamic allocation to allocate memory effectively.<br><br>
+            <b>Memory Deallocation:</b> Memory deallocation, also known as memory release or memory freeing, involves releasing memory blocks that are no longer in use by processes. Proper deallocation prevents memory leaks and ensures efficient memory utilization.<br><br>
+            <b>Memory Protection:</b> Memory protection mechanisms prevent unauthorized access to memory regions, ensuring the integrity and security of the system. Techniques such as memory segmentation and memory paging are used to enforce memory protection and prevent processes from accessing memory outside their allocated regions.<br><br>
+            <b>Memory Optimization:</b> Memory optimization techniques aim to improve memory utilization and system performance by reducing fragmentation and maximizing the use of available memory resources. Techniques such as compaction, swapping, and virtual memory management optimize memory usage and enhance overall system efficiency.<br><br>
+            Effective memory management is essential for maintaining system stability, preventing memory-related errors, and providing a seamless computing experience for users.
+        </p>
+    </main>
+</body>
+{% endblock %}

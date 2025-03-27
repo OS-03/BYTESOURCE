@@ -1,0 +1,49 @@
+
+{% extends "toc2.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>3. Context-Free Grammars</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">Contents:</p>
+        <hr>
+        <a href="{% url 'toc1' %}" class="aside-anchors">1. Introduction to Theory of Computation</a>
+        <a href="{% url 'toc2' %}" class="aside-anchors">2. Finite Automata</a>
+        <a href="{% url 'toc3' %}" class="aside-anchors">3. Context-Free Grammars</a>
+        <a href="{% url 'toc4' %}" class="aside-anchors">4. Turing Machines</a>
+        <a href="{% url 'toc5' %}" class="aside-anchors">5. Computability and Complexity</a>
+    </aside>
+    <main>
+        <hr>
+        <br>
+        <p>
+            Context-free grammars (CFGs) are formal grammars that describe the syntax of programming languages and other formal languages. They are widely used in the theory of computation and parsing techniques.
+        </p>
+        <p>
+            A context-free grammar consists of a set of production rules that specify how to generate strings in the language. Each production rule consists of a non-terminal symbol and a sequence of symbols (terminal or non-terminal) that can replace it.
+        </p>
+        <p>
+            CFGs are used to formally describe the syntax of programming languages, allowing compilers and interpreters to analyze and understand the structure of source code. They are also used in natural language processing, where they help parse and understand the structure of human languages.
+        </p>
+        <p>
+            Parsing techniques such as top-down parsing and bottom-up parsing are based on context-free grammars and are used to generate parse trees from input strings according to the grammar rules.
+        </p>
+    </main>
+</body>
+{% endblock %}

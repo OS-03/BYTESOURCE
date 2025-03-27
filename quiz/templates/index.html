@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+  h1 {
+    font-family: "Poppins";
+    position: relative;
+    left: 35%;
+    top: 15%;
+    height: 30%;
+    width: 30%;
+    font-size: 40px;
+    font-weight: 700;
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeIn 3s ease forwards;
+    /* Animation */
+}
+@keyframes fadeIn {
+    0% {
+        opacity: -5;
+    }
+
+    100% {
+        opacity: 3;
+    }
+}
+</style>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="{% url 'dsa' %}">DSA</a></li>
+            <li><a href="{% url 'sql' %}">SQL</a></li>
+            <li><a href="{% url 'os' %}">Operating System</a></li>
+            <li><a href="{% url 'toc' %}">Theory of Computation</a></li>
+            <li><a href="{% url 'cn' %}">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <header class="bgimage">
+        <h1>What would you like to learn today?</h1>
+    </header>
+       <div class="subcont">
+        <div class="subject-container">
+            <div class="sub" id="dsa"><a href="{% url 'dsa'%}" ><button class="course">DSA</button></a></div>
+        
+        
+            <div class="sub" id="sql"><a href="{% url 'sql' %}" ><button class="course">SQL</button></a></div>
+        
+        
+            <div class="sub" id="cn"><a href="{% url 'cn' %}" ><button class="course">Computer Networks</button></a></div>
+        
+        
+            <div class="sub" id="os"><a href="{% url 'os'%}" ><button class="course">Operating Systems</button></a></div>
+        
+        
+            <div class="sub" id="toc"><a href="{% url 'toc' %}" ><button class="course">Theory Of Computation</button></a></div>
+        </div>
+      </div>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"></button>
+{% endblock %}
+

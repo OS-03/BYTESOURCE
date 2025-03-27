@@ -1,0 +1,109 @@
+{%extends 'dsa1.html'%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navhead">
+            <li><a href="">DSA</a></li>
+            <li><a href="">SQL</a></li>
+            <li><a href="">Operating System</a></li>
+            <li><a href="">Theory of Computation</a></li>
+            <li><a href="">Computer Networks</a></li>
+        </ul>
+    </nav>
+    <h1>2. Trees</h1> <!-- Fixed header -->
+    <aside>
+        <p class="aside-anchors">contents:</p>
+        <hr>
+        <a href="{% url 'dsa1' %}"  class="aside-anchors">1. Stacks, Queues, and Linked Lists</a>
+        <a href="{% url 'dsa2'  %}" class="aside-anchors">2. Trees</a>
+        <a href="{% url 'dsa3'  %}" class="aside-anchors">3. Graphs</a>
+        <a href="{% url 'dsa4'  %}" class="aside-anchors">4. Searching and Sorting</a>
+        <a href="{% url 'dsa5'  %}" class="aside-anchors">5. Hashing</a>
+        <a href="{% url 'dsa6'  %}" class="aside-anchors">6. Arrays</a>
+    </aside>
+    <main>
+        <hr>
+        <p><br>
+            In computer science, a <strong>tree</strong> is a widely used abstract data type that represents a hierarchical tree structure with a set of connected nodes. Each node in the tree can be connected to many children (depending on the type of tree), but must be connected to exactly one parent, except for the root node, which has no parent (i.e., the root node as the top-most node in the tree hierarchy). These constraints mean there are no cycles or "loops" (no node can be its own ancestor), and also that each child can be treated like the root node of its own subtree, making recursion a useful technique for tree traversal. In contrast to linear data structures, many trees cannot be represented by relationships between neighboring nodes (parent and children nodes of a node under consideration if they exists) in a single straight line (called edge or link between two adjacent nodes).
+        </p>
+        <p>
+            <strong>Binary trees</strong> are a commonly used type, which constrain the number of children for each parent to at most two. When the order of the children is specified, this data structure corresponds to an ordered tree in graph theory. A value or pointer to other data may be associated with every node in the tree, or sometimes only with the leaf nodes, which have no children nodes.
+        </p>
+        <p>
+            The abstract data type (ADT) can be represented in a number of ways, including a list of parents with pointers to children, a list of children with pointers to parents, or a list of nodes and a separate list of parent-child relations (a specific type of adjacency list). Representations might also be more complicated, for example using indexes or ancestor lists for performance.
+        </p>
+        <p>
+            Trees as used in computing are similar to but can be different from mathematical constructs of trees in graph theory, trees in set theory, and trees in descriptive set theory.
+        </p>
+        <p>
+            <strong>Applications:</strong>
+        </p>
+        <ul>
+            <li>File systems for:</li>
+            <ul>
+                <li>Directory structure used to organize subdirectories and files (symbolic links create non-tree graphs, as do multiple hard links to the same file or directory)</li>
+                <li>The mechanism used to allocate and link blocks of data on the storage device</li>
+            </ul>
+            <li>Class hierarchy or "inheritance tree" showing the relationships among classes in object-oriented programming; multiple inheritance produces non-tree graphs</li>
+            <li>Abstract syntax trees for computer languages</li>
+            <li>Natural language processing:</li>
+            <ul>
+                <li>Parse trees</li>
+                <li>Modeling utterances in a generative grammar</li>
+                <li>Dialogue tree for generating conversations</li>
+            </ul>
+            <li>Document Object Models ("DOM tree") of XML and HTML documents</li>
+            <li>Search trees store data in a way that makes an efficient search algorithm possible via tree traversal</li>
+            <ul>
+                <li>A binary search tree is a type of binary tree</li>
+                <li>Representing sorted lists of data</li>
+            </ul>
+            <li>Computer-generated imagery:</li>
+            <ul>
+                <li>Space partitioning, including binary space partitioning</li>
+                <li>Digital compositing</li>
+                <li>Storing Barnes–Hut trees used to simulate galaxies</li>
+                <li>Implementing heaps</li>
+                <li>Nested set collections</li>
+            </ul>
+            <li>Hierarchical taxonomies such as the Dewey Decimal Classification with sections of increasing specificity</li>
+            <li>Hierarchical temporal memory</li>
+            <li>Genetic programming</li>
+            <li>Hierarchical clustering</li>
+        </ul>
+        <p>
+            Trees can be used to represent and manipulate various mathematical structures, such as:
+        </p>
+        <ul>
+            <li>Paths through an arbitrary node-and-edge graph (including multigraphs), by making multiple nodes in the tree for each graph node used in multiple paths</li>
+            <li>Any mathematical hierarchy</li>
+        </ul>
+        <p>
+            Tree structures are often used for mapping the relationships between things, such as:
+        </p>
+        <ul>
+            <li>Components and subcomponents which can be visualized in an exploded-view drawing</li>
+            <li>Subroutine calls used to identify which subroutines in a program call other subroutines non-recursively</li>
+            <li>Inheritance of DNA among species by evolution, of source code by software projects (e.g., Linux distribution timeline), of designs in various types of cars, etc.</li>
+            <li>The contents of hierarchical namespaces</li>
+        </ul>
+        <p>
+            JSON and YAML documents can be thought of as trees, but are typically represented by nested lists and dictionaries.
+        </p>
+        <p>
+            <strong>Terminology:</strong>
+        </p>
+        <p>
+            A <strong>node</strong> is a structure which may contain data and connections to other nodes, sometimes called edges or links. Each node in a tree
+    
+    <button onclick="topFunction()" id="myBtn" title="Go to top"></button>
+</p>
+</main>
+</body>
+{% endblock %}
