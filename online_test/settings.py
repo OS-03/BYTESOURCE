@@ -53,7 +53,6 @@ ALLOWED_HOSTS = ["*", "0.0.0.0"]
 
 INSTALLED_APPS = [
     "cloudinary",
-    "cloudinary_storage",
     "mcq",
     "quiz",
     "django.contrib.admin",
@@ -150,28 +149,9 @@ STATICFILES_DIRS = [
     # ...other static directories if needed...
 ]
 
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
-
 # Cloudinary configuration
 cloudinary.config(
     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
     api_key=os.getenv('CLOUDINARY_API_KEY'),
     api_secret=os.getenv('CLOUDINARY_API_SECRET')
 )
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# Set Cloudinary as the default storage for media files
-# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-# MEDIA_URL = "/media/"
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-APPEND_SLASH = False
-
-urlpatterns = [
-    # ... existing URL patterns ...
-]
-# Remove the following block to fix the error:
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# print(CLOUDINARY_STORAGE["API_KEY"])
