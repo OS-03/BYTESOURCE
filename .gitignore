@@ -1,5 +1,4 @@
 csv/
-*sqlite3
 *.idea
 *.code
 *__pycache__
@@ -7,5 +6,4 @@ csv/
 .DS_Store
 # Environments
 .venv
-static/
 
