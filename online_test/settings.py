@@ -156,3 +156,6 @@ cloudinary.config(
     api_key=os.getenv('CLOUDINARY_API_KEY'),
     api_secret=os.getenv('CLOUDINARY_API_SECRET')
 )
+
+# Remove any STATICFILES_STORAGE override unless you are using a CDN or custom storage backend.
+# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'  # REMOVE or COMMENT OUT
