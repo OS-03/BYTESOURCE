@@ -171,6 +171,7 @@ APPEND_SLASH = False
 urlpatterns = [
     # ... existing URL patterns ...
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Remove the following block to fix the error:
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # print(CLOUDINARY_STORAGE["API_KEY"])
