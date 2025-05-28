@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% load i18n %}
+{%load static %}
+{% trans "Welcome to ByteSource - Django Login!!" %}
+ {% trans "Hello"%} {{ user.username }}!!
+ {% trans "Please confirm your email by clicking on the following link."%}
+
+ Confirmation Link: http://{{ domain }}{% url 'activate' uidb64=uid token=token %} 
+

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load quiz_tags %}
+
+{% block title %} {{ quiz.title}} {% endblock %}
+{% block description %} {% trans "Exam Results for" %} {{ quiz.title }} {% endblock %}
+
+{% block content %}
+
+<style>
+  .quiz-result-container {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: #f7fafd;
+    border-radius: 18px;
+    padding: 36px 32px;
+    margin: 40px auto;
+    max-width: 800px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+  }
+  .quiz-result-container h2 {
+    font-size: 2.2rem;
+    color: #2a4d69;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  .quiz-result-container p.lead {
+    font-size: 1.25rem;
+    color: #1b2b34;
+    margin: 18px 0 10px 0;
+    font-weight: 500;
+  }
+  .quiz-result-container .muted, .quiz-result-container small {
+    color: #7b8a8b;
+    font-size: 0.98rem;
+  }
+  .quiz-result-container .well {
+    background: linear-gradient(90deg, #fdf6e3 60%, #f7e9c6 100%);
+    border-left: 5px solid #ffe082;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 12px 0 18px 0;
+    font-size: 1.05rem;
+    color: #6d4c1b;
+  }
+  .quiz-result-container strong {
+    color: #2a4d69;
+    font-weight: 600;
+  }
+  .quiz-result-container hr {
+    border: none;
+    border-top: 2px solid #e0e7ef;
+    margin: 28px 0;
+  }
+  .quiz-result-container .result-message {
+    font-size: 1.15rem;
+    color: #388e3c;
+    background: #e8f5e9;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+</style>
+
+<div class="quiz-result-container">
+
+  {% if previous.answers %}
+    <p class="muted"><small>{% trans "The previous question" %}:</small></p>
+    <p style="margin-bottom: 8px;">{{ previous.previous_question }}</p>
+    <p>Your answer was
+      <strong>
+        {{ previous.previous_outcome|yesno:"correct,incorrect" }}
+      </strong>
+    </p>
+    {% include 'correct_answer.html' %}
+    <p style="margin-top: 12px;"><strong>{% trans "Explanation" %}:</strong></p>
+    <div class="well">
+      <p>{{ previous.previous_question.explanation }}</p>
+    </div>
+    <hr>
+  {% endif %}
+
+  {% if max_score %}
+    <div>
+      <h2>{% trans "Exam results" %}</h2>
+      <p>
+        <small class="muted">{% trans "Exam title" %}: </small>
+        <strong>{{ quiz.title }}</strong>
+      </p>
+      <p class="lead">
+        {% trans "You answered" %} <strong>{{ score }}</strong> {% trans "questions correctly out of" %} <strong>{{ max_score }}</strong>, {% trans "giving you" %} <strong>{{ percent }}</strong> {% trans "percent correct" %}
+      </p>
+      {% if quiz.pass_mark %}
+        <hr>
+        <p class="result-message">{{ sitting.result_message }}</p>
+        <hr>
+      {% endif %}
+      <p>{% trans "Review the questions below and try the exam again in the future"%}.</p>
+      {% if user.is_authenticated %}
+        <p>{% trans "The result of this exam will be stored in your progress section so you can review and monitor your progression" %}.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <hr>
+
+  {% if possible %}
+    <p class="lead">
+      {% trans "Your session score is" %} <strong>{{ session }}</strong> {% trans "out of a possible" %} <strong>{{ possible }}</strong>
+    </p>
+    <hr>
+  {% endif %}
+
+  {% if questions %}
+    {% for question in questions %}
+      <p class="lead" style="margin-top: 30px;">
+        {{ question.content }}
+      </p>
+      {% correct_answer_for_all question %}
+      {% if question.user_answer %}
+        <p>{% trans "Your answer" %}: <strong>{{ question|answer_choice_to_string:question.user_answer }}</strong></p>
+      {% endif %}
+      <p style="margin-top: 10px;"><strong>{% trans "Explanation" %}:</strong></p>
+      <div class="well">
+        <p>{{ question.explanation|safe }}</p>
+      </div>
+      <hr>
+    {% endfor %}
+  {% endif %}
+
+</div>
+{% endblock %}

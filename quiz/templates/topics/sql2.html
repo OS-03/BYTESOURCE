@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+{% include "topics/aside-anchors.html" %}
+<body>
+    <h1>2.SQL Syntax and Datatypes</h1> <!-- Fixed header -->
+    <main>
+        <hr><br>
+        <p>
+            SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).
+        </p>
+        <p>
+            SQL syntax refers to the set of rules defining how SQL queries are written and executed. It includes various elements such as keywords, clauses, expressions, operators, and functions.
+        </p>
+        <p>
+            The basic structure of an SQL query consists of clauses such as SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, and LIMIT. These clauses are used to retrieve, filter, and manipulate data stored in a database.
+        </p>
+        <p>
+            SQL also supports different data types that define the type of data that can be stored in a column of a table. Common SQL data types include INTEGER, VARCHAR, CHAR, DATE, TIME, and BOOLEAN, among others.
+        </p>
+        <p>
+            Understanding SQL syntax and data types is essential for writing efficient and effective database queries. With the right knowledge and skills, you can leverage the power of SQL to perform various data manipulation tasks and extract valuable insights from your databases.
+        </p>
+    </main>
+</body>
+{% endblock %}

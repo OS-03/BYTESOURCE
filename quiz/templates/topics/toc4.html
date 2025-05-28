@@ -1,0 +1,26 @@
+{% extends "toc2.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+{% include "topics/aside-anchors.html" %}
+<body>
+    <h1>4. Turing Machines</h1> <!-- Fixed header -->
+    <main>
+        <hr>
+        <br>
+        <p>
+            Turing machines are theoretical devices that formalize the concept of computation. They consist of a tape divided into cells, a read/write head, and a set of states. At each step, the machine reads the symbol on the current cell, consults its transition function, and moves the head left or right, changes the symbol on the cell, and transitions to a new state based on the current state and the symbol read.
+        </p>
+        <p>
+            Turing machines can simulate any algorithm or compute any computable function. They are used in the theory of computation to prove the limits of what can be computed algorithmically and to study computability and complexity.
+        </p>
+        <p>
+            Alan Turing introduced Turing machines in 1936 as a formal model of computation. They are central to the Church-Turing thesis, which states that any function computable by an algorithm can be computed by a Turing machine.
+        </p>
+        <p>
+            Turing machines are used to define formal languages, such as the set of all strings that are accepted by a particular Turing machine. They are also used in complexity theory to study the time and space complexity of algorithms.
+        </p>
+    </main>
+</body>
+{% endblock %}

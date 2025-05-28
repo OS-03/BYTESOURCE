@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% load i18n%}
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
+
+{% block content %}
+<style>
+	.quiz-container {
+		background: #fff;
+		border-radius: 18px;
+		box-shadow: 0 8px 32px 0 rgba(162,139,231,0.25);
+		margin: 40px auto;
+		max-width: 600px;
+		padding: 36px 32px 32px 32px;
+		position: relative;
+		border: 2px solid #a28be7;
+		font-family: 'Segoe UI', Arial, sans-serif;
+	}
+	.quiz-container .quiz-title {
+		color: #6c4fb0;
+		font-size: 2.2rem;
+		font-weight: 700;
+		margin-bottom: 10px;
+		letter-spacing: 1px;
+	}
+	.quiz-container .quiz-category {
+		color: #fff;
+		background: linear-gradient(90deg, #a28be7 60%, #42d8dd 100%);
+		border-radius: 12px;
+		display: inline-block;
+		padding: 8px 18px;
+		font-size: 1.1rem;
+		font-weight: 500;
+		margin-bottom: 18px;
+		margin-top: 10px;
+		box-shadow: 0 2px 8px rgba(162,139,231,0.10);
+	}
+	.quiz-container .quiz-question {
+		color: #6c4fb0;
+		font-size: 1.3rem;
+		font-weight: 600;
+		margin: 18px 0 22px 0;
+		text-align: center;
+	}
+	.quiz-container .list-group-item {
+		background: #f5f0ff;
+		border: 1px solid #a28be7;
+		border-radius: 8px;
+		margin-bottom: 12px;
+		color: #6c4fb0;
+		font-size: 1.08rem;
+		transition: background 0.2s;
+	}
+	.quiz-container .list-group-item:hover {
+		background: #e5d6ff;
+	}
+	.quiz-container .nsb {
+		border: none;
+		width: 60%;
+		padding: 15px 0;
+		color: #fff;
+		background: linear-gradient(90deg, #a28be7 60%, #42d8dd 100%);
+		cursor: pointer;
+		border-radius: 10px;
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin-top: 20px;
+		box-shadow: 0 2px 8px rgba(162,139,231,0.15);
+		transition: background 0.2s, box-shadow 0.2s;
+	}
+	.quiz-container .nsb:hover {
+		background: linear-gradient(90deg, #6c4fb0 60%, #42d8dd 100%);
+		box-shadow: 0 4px 16px rgba(162,139,231,0.25);
+	}
+	.quiz-container .No {
+		padding: 2%;
+		color: #6c4fb0;
+		font-weight: 500;
+		font-size: 1.05rem;
+	}
+	.quiz-container .progress-info {
+		float: right;
+		color: #6c4fb0;
+		font-weight: 600;
+		background: #f5f0ff;
+		border-radius: 8px;
+		padding: 6px 14px;
+		margin-bottom: 10px;
+		font-size: 1rem;
+		border: 1px solid #a28be7;
+	}
+	.quiz-container .alert-success {
+		background: #e6e1fa;
+		color: #4b2e83;
+		border: 1px solid #a28be7;
+		border-radius: 8px;
+		margin-bottom: 12px;
+		padding: 12px;
+	}
+	.quiz-container .alert-warning {
+		background: #fbefff;
+		color: #a28be7;
+		border: 1px solid #a28be7;
+		border-radius: 8px;
+		margin-bottom: 12px;
+		padding: 12px;
+	}
+	.quiz-container .well {
+		border-radius: 8px;
+		border: 1px solid #a28be7;
+		background: #f5f0ff;
+		color: #6c4fb0;
+		padding: 12px 18px;
+		margin-bottom: 18px;
+	}
+	.quiz-container img {
+		max-width: 100%;
+		border-radius: 10px;
+		margin: 18px 0;
+		border: 2px solid #a28be7;
+		box-shadow: 0 2px 8px rgba(162,139,231,0.10);
+	}
+	.quiz-background {
+		background: linear-gradient(135deg, #a28be7 0%, #6c4fb0 100%);
+		min-height: 100vh;
+	}
+</style>
+
+
+<div class="quiz-container">
+	<div class="quiz-title">{{ quiz.title }}</div>
+	{% if progress %}
+		<div class="progress-info">
+			{% trans "Question" %} {{ progress.0|add:1 }} {% trans "of" %} {{ progress.1 }}
+		</div>
+	{% endif %}
+
+	{% if previous.answers %}
+		<p class="muted"><small>{% trans "The previous question" %}:</small></p>
+		<p>{{ previous.previous_question }}</p>
+		{% if previous.previous_outcome %}
+			<div class="alert alert-success">
+		{% else %}
+			<div class="alert alert-warning">
+		{% endif %}
+				<p><Big>
+					{% trans "Your answer was" %} </Big>
+					<strong>
+						{{ previous.previous_outcome|yesno:"correct,incorrect" }}
+					</strong>
+				</p>
+			</div>
+		{% include 'correct_answer.html' %}
+		<p><strong>{% trans "Explanation" %}:</strong></p>
+		<div class="well">
+			<p>{{ previous.previous_question.explanation }}</p>
+		</div>
+		<hr>
+	{% endif %}
+
+	{% if question %}
+		<div class="quiz-category">
+			{% trans "Question category :" %} <strong>{{question.category}}</strong>
+		</div>
+		<div class="quiz-question">{{ question.content }}</div>
+		{% if question.figure %}
+			<img src="{{ question.figure.url }}" alt="{{ question.content }}" />
+		{% endif %}
+		<form action="" method="POST">{% csrf_token %}
+			<input type="hidden" name="question_id" value="{{ question.id }}">
+			<ul class="list-group">
+				{% for answer in form.answers.field.choices %}
+					<li class="list-group-item option-select" data-value="{{ answer.0 }}">
+						{{ answer.1 }}
+					</li>
+				{% endfor %}
+			</ul>
+			<input type="hidden" name="answers" id="selected-answer">
+			<script>
+				document.querySelectorAll('.option-select').forEach(function(item) {
+					item.addEventListener('click', function() {
+						document.querySelectorAll('.option-select').forEach(function(i) {
+							i.style.background = '';
+							i.style.fontWeight = '';
+						});
+						item.style.background = '#e5d6ff';
+						item.style.fontWeight = 'bold';
+						document.getElementById('selected-answer').value = item.getAttribute('data-value');
+					});
+				});
+			</script>
+			<div style="text-align:center;">
+				{% if progress.0|add:1 == progress.1 %}
+					<button class="nsb" type="submit">{% trans "Submit" %}</button>
+				{% else %}
+					<button class="nsb" type="submit">{% trans "Next" %}</button>
+				{% endif %}
+			</div>
+		</form>
+	{% endif %}
+</div>
+<hr>
+{% endblock %}

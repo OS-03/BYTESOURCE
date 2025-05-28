@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load quiz_tags %}
+{% block title %}
+{% trans "Result of" %} {{ sitting.quiz.title }} {% trans "for" %} {{ sitting.user }}
+{% endblock %}
+
+{% block content %}
+<style>
+	body {
+		background: linear-gradient(135deg, #f3e7fa 0%, #c3aed6 100%);
+		font-family: 'Segoe UI', 'Arial', sans-serif;
+	}
+	h2, h3 {
+		color: #6c3483;
+		letter-spacing: 1px;
+		font-weight: 700;
+	}
+	.table {
+		background: #f8f6fa;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 16px rgba(108,52,131,0.08);
+		border: none;
+	}
+	.table thead {
+		background: linear-gradient(90deg, #a084ca 0%, #6c3483 100%);
+		color: #fff;
+	}
+	.table th, .table td {
+		border: none;
+		padding: 16px 12px;
+		vertical-align: middle;
+	}
+	.table-striped tbody tr:nth-of-type(odd) {
+		background-color: #ede7f6;
+	}
+	.table-striped tbody tr:nth-of-type(even) {
+		background-color: #f3e7fa;
+	}
+	.btn-warning {
+		background: linear-gradient(90deg, #a084ca 0%, #6c3483 100%);
+		color: #fff;
+		border: none;
+		border-radius: 20px;
+		padding: 8px 18px;
+		font-weight: 600;
+		transition: background 0.2s;
+	}
+	.btn-warning:hover {
+		background: linear-gradient(90deg, #6c3483 0%, #a084ca 100%);
+		color: #fff;
+	}
+	hr {
+		border: 0;
+		height: 2px;
+		background: linear-gradient(90deg, #a084ca 0%, #6c3483 100%);
+		margin: 24px 0;
+	}
+	td p {
+		margin: 0;
+		font-weight: 600;
+		color: #6c3483;
+		letter-spacing: 0.5px;
+	}
+	img {
+		border-radius: 8px;
+		border: 2px solid #a084ca;
+		box-shadow: 0 2px 8px rgba(160,132,202,0.15);
+		max-width: 100%;
+		height: auto;
+	}
+</style>
+
+<h2>{% trans "Quiz title" %}: {{ sitting.quiz.title }}</h2>
+<h3>{% trans "Category" %}: {{ sitting.quiz.category }}</h3>
+<p>{{ sitting.quiz.description }}</p>
+<hr>
+<p>{% trans "User" %}: {{ sitting.user }}</p>
+<p>{% trans "Completed" %}: {{ sitting.end|date }}</p>
+<p>{% trans "Score" %}: {{ sitting.get_percent_correct }}%</p>
+
+<table class="table table-bordered table-striped">
+
+	<thead>
+	<tr>
+		<th>{% trans "Question" %}</th>
+		<th>{% trans "User answer" %}</th>
+		<th></th>
+		<th></th>
+	</tr>
+	</thead>
+
+	<tbody>
+{% for question in questions %}
+
+	<tr>
+			<td>
+				{{ question.content }}
+				{% if question.figure %}
+				<div style="max-width: 100px;"><img src="{{ question.figure.url }}" alt="{{ question.figure }}"/></div>
+				{% endif %}
+			</td>
+		<td>{{ question|answer_choice_to_string:question.user_answer }}</td>
+		<td>
+		{% if question.id in sitting.get_incorrect_questions %}
+			<p>{% trans "incorrect" %}</p>
+		{% else %}
+			<p>{% trans "Correct" %}</p>
+		{% endif %}
+		</td>
+		<td>
+		<form action="" method="POST">{% csrf_token %}
+			<input type=hidden name="qid" value="{{ question.id }}">
+			<button type="submit" class="btn btn-warning">{% trans "Toggle whether correct" %}</button>
+		</form>
+		</td>
+	</tr>
+
+{% endfor %}
+
+	</tbody>
+
+</table>
+{% endblock %}

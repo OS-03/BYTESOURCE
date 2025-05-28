@@ -1,0 +1,138 @@
+{% extends "base.html" %} {% load i18n %} {% include "includes/Head.html" %} 
+{% block content %} {% load static %}
+<body>
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    id="profile-form"
+    action="{% url 'change_profile_image' %}"
+    style="
+      max-width: 50rem;
+      margin: 40px auto;
+      padding: 32px 28px;
+      background: #f9f9fc;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    "
+  >
+    {% csrf_token %}
+    <div
+      class="profile-photo-container"
+      style="
+        margin-bottom: 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      "
+    >
+      <label
+        for="profile-photo"
+        style="
+          font-weight: 700;
+          margin-bottom: 10px;
+          color: #2d3748;
+          font-size: 1.1rem;
+          letter-spacing: 0.5px;
+        "
+        >Change Profile Photo:</label
+      >
+      <input
+        type="file"
+        id="profile-photo"
+        name="profile_photo"
+        accept="image/*"
+        style="
+          padding: 8px;
+          border-radius: 6px;
+          border: 1px solid #cbd5e1;
+          background: #fff;
+        "
+      />
+    </div>
+    <div
+      class="preview-container"
+      style="margin-bottom: 24px; text-align: center"
+    >
+      <p style="margin-bottom: 10px; color: #4a5568; font-size: 1rem">
+        Image Preview (Zoom with mouse move):
+      </p>
+      <div
+        id="zoom-preview"
+        style="display: inline-block; border: 2px dashed #a0aec0; border-radius: 12px; padding: 0; background: #fff; width: 40rem; height: 30rem; background-image: url('{{ user.profile.image.url }}'); background-size: cover; background-position: center; cursor: zoom-in;"
+      ></div>
+      <div
+        id="zoom-preview"
+        style="display: inline-block; border: 2px dashed #a0aec0; border-radius: 12px; padding: 0; background: #fff; background-image: url('{{ user.profile.image.url }}'); background-size: cover; background-position: center; cursor: zoom-in;"
+      ></div>
+    </div>
+    <button type="submit" class="btn-submit" style="margin-right: 12px">
+      Upload
+    </button>
+    <button
+      type="button"
+      class="btn-submit"
+      style="background: #3182ce"
+      onclick="window.location.href='/'"
+    >
+      Go to Home
+    </button>
+    {% if messages %} {% for message in messages %}
+    <p id="message" style="color: #38a169; font-weight: bold; margin-top: 18px">
+      {{ message }}
+    </p>
+    {% endfor %} {% endif %}
+  </form>
+
+  <script>
+    function setZoomImage(url) {
+      const zoomDiv = document.getElementById("zoom-preview");
+      zoomDiv.style.backgroundImage = `url('${url}')`;
+    }
+    document
+      .getElementById("profile-photo")
+      .addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            setZoomImage(e.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+    const zoomDiv = document.getElementById("zoom-preview");
+    zoomDiv.addEventListener("mousemove", function (e) {
+      const rect = zoomDiv.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      zoomDiv.style.backgroundSize = "400% 400%";
+      zoomDiv.style.backgroundPosition = `${x}% ${y}%`;
+    });
+    zoomDiv.addEventListener("mouseleave", function () {
+      zoomDiv.style.backgroundSize = "cover";
+      zoomDiv.style.backgroundPosition = "center";
+    });
+  </script>
+
+  <style>
+    .btn-submit {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover {
+      background-color: #45a049;
+    }
+    .btn-submit[style*="background: #3182ce;"]:hover {
+      background: #2563eb !important;
+    }
+  </style>
+</body>
+{% endblock %}

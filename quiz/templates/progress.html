@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load quiz_tags %}
+
+{% block title %} {% trans "Progress Page" %} {% endblock %}
+{% block description %} {% trans "User Progress Page" %} {% endblock %}
+
+{% block content %}
+
+<style>
+	.progress-container {
+		max-width: 900px;
+		margin: 40px auto;
+		padding: 30px 40px;
+		background: #fff;
+		border-radius: 16px;
+		box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+		font-family: 'Segoe UI', Arial, sans-serif;
+	}
+	.progress-title {
+		text-align: center;
+		color: #a78bfa;
+		font-family: 'Segoe UI', Arial, sans-serif;
+		margin-bottom: 24px;
+		font-size: 2.2rem;
+		font-weight: 600;
+		letter-spacing: 1px;
+	}
+	.progress-lead {
+		text-align: center;
+		font-size: 1.1rem;
+		color: #555;
+		margin-bottom: 24px;
+	}
+	.progress-table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 20px 0 40px 0;
+		font-size: 1rem;
+		border-radius: 10px;
+		overflow: hidden;
+		background: #fafafa;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+	}
+	.progress-table th, .progress-table td {
+		padding: 16px 18px;
+		border: 1px solid #e0e0e0;
+		text-align: left;
+	}
+	.progress-table th {
+		background-color: #f2f2f2;
+		font-weight: 600;
+		color: #333;
+	}
+	.progress-table tr {
+		transition: background 0.2s;
+	}
+	.progress-table tr:hover {
+		background: #eeebf8;
+	}
+	hr.progress-divider {
+		border: 0;
+		border-top: 1px solid #ddd;
+		margin: 48px 0 32px 0;
+	}
+</style>
+
+<div class="progress-container">
+
+	{% if cat_scores %}
+		<h1 class="progress-title">{% trans "Question Category Scores" %}</h1>
+		<table class="progress-table">
+			<thead>
+				<tr>
+					<th>{% trans "Category" %}</th>
+					<th>{% trans "Correctly answered" %}</th>
+					<th>{% trans "Incorrect" %}</th>
+					<th>%</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for cat, value in cat_scores.items %}
+				<tr>
+					<td>{{ cat }}</td>
+					<td>{{ value.0 }}</td>
+					<td>{{ value.1 }}</td>
+					<td>{{ value.2 }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+
+	{% if exams %}
+		<hr class="progress-divider">
+		<h1 class="progress-title">{% trans "Previous exam papers" %}</h1>
+		<p class="progress-lead">
+			{% trans "Below are the results of exams that you have sat." %}
+		</p>
+		<table class="progress-table">
+			<thead>
+				<tr>
+					<th>{% trans "Quiz Title" %}</th>
+					<th>{% trans "Score" %}</th>
+					<th>{% trans "Possible Score" %}</th>
+					<th>%</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for exam in exams %}
+				<tr>
+					<td>{{ exam.quiz.title }}</td>
+					<td>{{ exam.current_score }}</td>
+					<td>{{ exam.get_max_score }}</td>
+					<td>{{ exam.get_percent_correct }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+
+</div>
+{% endblock %}

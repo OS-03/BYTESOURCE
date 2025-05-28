@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load quiz_tags %}
+{% block title %}{% trans "All Quizzes" %}{% endblock %}
+
+{% block content %}
+<style>
+	body {
+		background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+		min-height: 100vh;
+	}
+	.list {
+		/* border: 2px solid #fff; */ /* Removed white border */
+		background: rgba(80, 0, 120, 0.7);
+		background-image: url('/static/img/topic.jpg');
+		background-blend-mode: multiply;
+		background-attachment: fixed;
+		background-repeat: space;
+		background-size: cover;
+		height: 300px;
+		padding: 30px;
+		color: #fff;
+		display: flex;
+		align-items: flex-end;
+		border-radius: 16px;
+		margin-bottom: 30px;
+	}
+	.list h2 {
+		margin: 0;
+		font-weight: bold;
+		font-size: 2.2rem;
+		letter-spacing: 2px;
+		color: #fff;
+		text-shadow: 1px 1px 8px #6a11cb;
+	}
+	table.table {
+		width: 100%;
+		background: rgba(60, 0, 90, 0.85);
+		/* border: 2px solid #fff; */ /* Removed white border */
+		border-radius: 12px;
+		overflow: hidden;
+		color: #fff;
+		margin-top: 10px;
+	}
+	table.table th, table.table td {
+		/* border: 1px solid #fff; */ /* Removed white border */
+		padding: 12px 16px;
+		text-align: left;
+		vertical-align: middle;
+	}
+	table.table th {
+		background: #7c3aed;
+		color: #fff;
+		font-size: 1.1rem;
+		letter-spacing: 1px;
+	}
+	table.table tr:nth-child(even) {
+		background: rgba(120, 0, 180, 0.3);
+	}
+	table.table tr:nth-child(odd) {
+		background: rgba(80, 0, 120, 0.2);
+	}
+	a {
+		color: #fff;
+		background: #a78bfa;
+		padding: 6px 14px;
+		border-radius: 6px;
+		/* border: 1px solid #fff; */ /* Removed white border */
+		text-decoration: none;
+		transition: background 0.2s, color 0.2s;
+		font-weight: 500;
+	}
+	a:hover {
+		background: #fff;
+		color: #7c3aed;
+		border-color: #7c3aed;
+	}
+	p {
+		color: #fff;
+		font-size: 1.1rem;
+		margin-top: 30px;
+		text-align: center;
+	}
+</style>
+<div class="list">
+	<h2>{% trans "LIST OF ALL THE QUIZZES" %}</h2>
+</div>
+
+		{% if quiz_list %}
+		<table class="table table-bordered table-striped">
+
+			<thead>
+			<tr>
+				<th>{% trans "Title" %}</th>
+				<th>{% trans "Category" %}</th>
+				<th>{% trans "Exam" %}</th>
+				<th>{% trans "Single attempt" %}</th>
+				<th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+
+				{% for quiz in quiz_list %}
+
+				<tr>
+				<td>{{ quiz.title }}</td>
+				<td>{{ quiz.category }}</td>
+				<td>{{ quiz.exam_paper }}</td>
+				<td>{{ quiz.single_attempt }}</td>
+				<td>
+				<a href="{% url 'quiz_start_page' slug=quiz.url %}">
+					{% trans "View details" %}
+				</a>
+			</tr>
+
+				{% endfor %}
+			</tbody>
+
+		</table>
+
+	{% else %}
+				<p>{% trans "There are no available quizzes" %}.</p>
+		{% endif %}
+{% endblock %}

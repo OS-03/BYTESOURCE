@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+{% include "topics/aside-anchors.html" %}
+<body>
+    <h1>4.SQL Joins and Clauses</h1> <!-- Fixed header -->
+    <main>
+        <hr>
+        <br>
+        <p>
+            SQL Joins and Clauses are fundamental concepts in database management systems. Joins are used to combine rows from two or more tables based on a related column between them, while clauses are used to filter rows based on specific conditions.
+        </p>
+        
+        <h3>SQL Joins</h3>
+        <p>
+            SQL Joins are used to retrieve data from multiple tables. There are different types of SQL Joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN. Each type of join determines how rows from one table are combined with rows from another table based on the specified condition.
+        </p>
+        
+        <h4>1. INNER JOIN</h4>
+        <p>
+            INNER JOIN returns only the rows that have matching values in both tables based on the specified condition.
+        </p>
+        
+        <h4>2. LEFT JOIN</h4>
+        <p>
+            LEFT JOIN returns all the rows from the left table and the matched rows from the right table. If there are no matching rows in the right table, NULL values are returned.
+        </p>
+        
+        <h4>3. RIGHT JOIN</h4>
+        <p>
+            RIGHT JOIN returns all the rows from the right table and the matched rows from the left table. If there are no matching rows in the left table, NULL values are returned.
+        </p>
+        
+        <h4>4. FULL JOIN</h4>
+        <p>
+            FULL JOIN returns all the rows when there is a match in either the left or right table. If there is no match, NULL values are returned.
+        </p>
+        
+        <h3>SQL Clauses</h3>
+        <p>
+            SQL Clauses are used to filter rows returned by a SQL query based on specified conditions. Commonly used SQL Clauses include WHERE, ORDER BY, GROUP BY, HAVING, and LIMIT.
+        </p>
+        
+        <h4>1. WHERE Clause</h4>
+        <p>
+            WHERE Clause is used to filter rows based on a specified condition.
+        </p>
+        
+        <h4>2. ORDER BY Clause</h4>
+        <p>
+            ORDER BY Clause is used to sort the result set in ascending or descending order based on one or more columns.
+        </p>
+        
+        <h4>3. GROUP BY Clause</h4>
+        <p>
+            GROUP BY Clause is used to group rows that have the same values into summary rows.
+        </p>
+        
+        <h4>4. HAVING Clause</h4>
+        <p>
+            HAVING Clause is used to filter rows returned by a GROUP BY Clause based on a specified condition.
+        </p>
+        
+        <h4>5. LIMIT Clause</h4>
+        <p>
+            LIMIT Clause is used to limit the number of rows returned by a query.
+        </p>
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{%include "includes/Head.html"%}
+
+{% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  #heading-main {
+    font-family: "Poppins";
+    position: relative;
+    left: 35%;
+    top: 15%;
+    height: 30%;
+    width: 30%;
+    font-size: 40px;
+    font-weight: 700;
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeIn 3s ease forwards;
+    /* Animation */
+}
+@keyframes fadeIn {
+    0% {
+        opacity: -5;
+    }
+
+    100% {
+        opacity: 3;
+    }
+}
+</style>
+    <header class="bgimage">
+        <h1 id="heading-main">What would you like to learn today?</h1>
+    </header>
+       <div class="subcont">
+        <div class="subject-container">
+            <div class="sub" id="dsa"><a href="{% url 'dsa'%}" ><button class="course">DSA</button></a></div>
+        
+        
+            <div class="sub" id="sql"><a  ><button class="course"href="{% url 'sql' %}">SQL</button></a></div>
+        
+        
+            <div class="sub" id="cn"><button class="course" href="{% url 'cn' %}">Computer Networks</button></div>
+        
+        
+            <div class="sub" id="os"><a href="{% url 'os'%}" ><button class="course">Operating Systems</button></a></div>
+        
+        
+            <div class="sub" id="toc"><a href="{% url 'toc' %}" ><button class="course">Theory Of Computation</button></a></div>
+        </div>
+      </div>
+{% endblock %}
+

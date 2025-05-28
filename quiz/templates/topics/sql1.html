@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+{% include "topics/aside-anchors.html" %}
+<body>
+    <h1>1.Introduction to Databases</h1> <!-- Fixed header -->
+    <main>
+        <hr><br>
+        <p>
+            A database is an organized collection of data, generally stored and accessed electronically from a computer system. Databases can be classified into different types based on the data model they use, such as relational databases, NoSQL databases, object-oriented databases, and more.
+        </p>
+        <p>
+            The primary purpose of a database is to provide a systematic way to store and retrieve data efficiently. Databases are widely used in various applications, including but not limited to business, education, healthcare, finance, and research.
+        </p>
+        <p>
+            Databases are designed to ensure data integrity, security, and reliability. They provide mechanisms for data validation, concurrency control, and backup and recovery. The structure of a database is defined by its schema, which specifies the tables, columns, relationships, and constraints.
+        </p>
+        <p>
+            SQL (Structured Query Language) is the standard language for managing and manipulating relational databases. SQL allows users to perform various operations such as creating tables, inserting data, querying data, updating records, and deleting records.
+        </p>
+        <p>
+            In this introductory course on databases, we will explore the fundamentals of database management, including data modeling, normalization, SQL syntax, and more. By the end of this course, you will have a solid understanding of how databases work and how to effectively use them in real-world applications.
+        </p>
+    </main>
+</body>
+{% endblock %}

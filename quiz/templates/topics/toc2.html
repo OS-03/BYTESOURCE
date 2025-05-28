@@ -1,0 +1,27 @@
+
+{% extends "toc1.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+{% include "topics/aside-anchors.html" %}
+<body>
+    <h1>2. Finite Automata</h1> <!-- Fixed header -->
+    <main>
+        <hr>
+        <br>
+        <p>
+            Finite automata are abstract machines that can be in one of a finite number of states at any given time. They are used to recognize patterns within input sequences and are fundamental to the theory of computation.
+        </p>
+        <p>
+            A finite automaton consists of a finite set of states, a set of input symbols, a transition function, and a start state (and possibly one or more accepting states). It can transition from one state to another based on the input it receives.
+        </p>
+        <p>
+            Finite automata come in various forms, such as deterministic finite automata (DFA) and nondeterministic finite automata (NFA). DFA has a unique transition from each state for every input symbol, while NFA may have multiple possible transitions for a given input symbol.
+        </p>
+        <p>
+            Finite automata have applications in various areas of computer science, including lexical analysis in compilers, pattern matching, and modeling of hardware circuits.
+        </p>
+    </main>
+</body>
+{% endblock %}

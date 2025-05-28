@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{{ quiz.title }}
+{% endblock %}
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .qtitle {
+    border: 3px solid #fff;
+    background-image: url('/static/img/topic.jpg'), linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 300px;
+    padding: 40px 30px 30px 50px;
+    color: #a259e6;
+    text-align: left;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    margin: 40px auto 0 auto;
+    max-width: 800px;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .qtitle h1 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 2px;
+    color: #a259e6;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .category {
+    background-image: url('/static/img/quiz.jpg'), linear-gradient(120deg, #232526 0%, #414345 100%);
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid #fff;
+    border-top: none;
+    padding: 28px 30px 28px 50px;
+    border-radius: 0 0 18px 18px;
+    margin: 0 auto 30px auto;
+    max-width: 800px;
+    color: #a259e6;
+    box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.17);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .head {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #c77dff;
+    letter-spacing: 1px;
+    margin-right: 8px;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .cat {
+    font-size: 1.5rem;
+    color: #a259e6;
+    font-weight: 600;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .m-3 {
+    background: rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 32px 40px;
+    margin: 0 auto 40px auto;
+    max-width: 800px;
+    color: #a259e6;
+    box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.07);
+    font-size: 1.15rem;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .m-3 h4 {
+    color: #c77dff;
+    font-weight: bold;
+    margin-bottom: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .btn-outline-success {
+    background: linear-gradient(90deg, #a259e6 0%, #c77dff 100%);
+    color: #fff !important;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 12px 36px;
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(162,89,230,0.2);
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 18px;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .btn-outline-success:hover {
+    background: linear-gradient(90deg, #c77dff 0%, #a259e6 100%);
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(162,89,230,0.3);
+  }
+</style>
+
+<div class="qtitle">
+  <h1>Topic : {{ quiz.title }}</h1>
+</div>
+<div class="category">
+  <div class="head">{% trans "Category" %}</div>
+  <div class="cat">{{ quiz.category }}</div>
+</div>
+<div class="m-3">
+{% if quiz.single_attempt %}
+  <h4>{% trans "You cannot attempt at this quiz as you have already attempted" %}.</h4>
+{% else %}
+  <p>{{ quiz.description }}</p>
+  <form method="get" action="{% url 'quiz_question' quiz_name=quiz.url %}">
+    <button type="submit" class="btn btn-outline-success mb-5">{% trans "Start quiz" %}</button>
+  </form>
+{% endif %}
+</div>
+{% endblock %}

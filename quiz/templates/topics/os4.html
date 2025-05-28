@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{%include "Head.html"%}
+{% load i18n %}
+{% block content %}
+{%load static%}
+{% include "topics/aside-anchors.html" %}
+<body>
+    <h1>4.Storage management</h1> <!-- Fixed header -->
+    <main>
+        <hr>
+        <br>
+        <p>
+            Storage management in operating systems involves efficiently managing the computer's storage resources, including both primary storage (such as RAM) and secondary storage (such as hard drives and SSDs). The primary goals of storage management are to provide efficient and reliable storage access, ensure data integrity, and optimize storage utilization.<br><br>
+            <b>File Systems:</b> A file system is a method used by operating systems to organize and store data on storage devices. Common file systems include FAT32, NTFS, ext4, and APFS. File systems provide hierarchical directory structures, file metadata, and access control mechanisms to manage stored data effectively.<br><br>
+            <b>Storage Allocation:</b> Storage allocation involves assigning storage space to files and directories in a file system. Operating systems use different allocation strategies such as contiguous allocation, linked allocation, and indexed allocation to allocate storage efficiently and minimize fragmentation.<br><br>
+            <b>Storage Retrieval:</b> Storage retrieval refers to the process of accessing stored data from storage devices. Operating systems provide mechanisms for reading and writing data to storage devices, including device drivers, file I/O operations, and caching techniques to improve performance.<br><br>
+            <b>Storage Security:</b> Storage security mechanisms protect stored data from unauthorized access, modification, or deletion. Techniques such as file permissions, encryption, and access control lists (ACLs) are used to enforce storage security policies and ensure data confidentiality and integrity.<br><br>
+            Effective storage management is crucial for ensuring data availability, reliability, and performance in modern computing environments. Operating systems employ various storage management techniques to meet the diverse storage requirements of users and applications.
+        </p>
+    </main>
+</body>
+{% endblock %}
