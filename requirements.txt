@@ -58,4 +58,3 @@ virtualenv==20.29.2
 gunicorn==21.2.0
 python-decouple==3.8
 cloudinary==1.39.0
-cloudinary-storage==0.11.0
