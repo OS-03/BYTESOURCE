@@ -21,8 +21,6 @@ from .info import *
 from decouple import config
 original_translation.ugettext = original_translation.gettext
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS = (Path(__file__).parent).joinpath(BASE_DIR, "templates")
@@ -44,7 +42,7 @@ EMAIL_PORT = EMAIL_PORT
 SECRET_KEY = "q^n4^0*8v2f9%qs$+hg7l0g!-461fja26bzq=cwp)y3u&k6i8&"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("RENDER", "") != "" or os.getenv("DEBUG", "False") == "True"
+DEBUG = True
 
 ALLOWED_HOSTS = ["*", "0.0.0.0"]
 
@@ -141,14 +139,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static",  # Ensure this directory exists
     # ...other static directories if needed...
 ]
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 
 # Cloudinary configuration
 cloudinary.config(
@@ -156,6 +152,15 @@ cloudinary.config(
     api_key=os.getenv('CLOUDINARY_API_KEY'),
     api_secret=os.getenv('CLOUDINARY_API_SECRET')
 )
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Remove any STATICFILES_STORAGE override unless you are using a CDN or custom storage backend.
-# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'  # REMOVE or COMMENT OUT
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+APPEND_SLASH = False
+
+urlpatterns = [
+    # ... existing URL patterns ...
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
