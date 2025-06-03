@@ -11,16 +11,13 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from django.conf import settings
-from django.urls import URLPattern
-from django.conf.urls.static import static
 import django.utils.translation as original_translation
 from pathlib import Path
-from django.contrib import admin
 from .info import *
-from decouple import config
 original_translation.ugettext = original_translation.gettext
 import cloudinary
+import cloudinary_storage
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS = (Path(__file__).parent).joinpath(BASE_DIR, "templates")
@@ -50,6 +47,7 @@ ALLOWED_HOSTS = ["*", "0.0.0.0"]
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     "cloudinary",
     "mcq",
     "quiz",
@@ -63,6 +61,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -139,10 +138,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Ensure this directory exists
-    # ...other static directories if needed...
-]
+STATIC_ROOT = BASE_DIR / "staticfiles"  # Add this line
+
+# In development, serve static files through Django.
+if DEBUG:
+    from django.conf import settings
+    from django.conf.urls.static import static
+    STATICFILES_DIRS = [BASE_DIR / "static"]
 
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 
