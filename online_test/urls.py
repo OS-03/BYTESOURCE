@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from quiz.admin import custom_admin_site
+from django.conf import settings
+from django.conf.urls.static import static
 
 # from quiz.views import main_page
 
@@ -25,3 +27,6 @@ urlpatterns = [
     path("admin/", custom_admin_site.urls),
     path("", include("quiz.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
