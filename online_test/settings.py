@@ -138,13 +138,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"  # Add this line
+STATIC_ROOT = "/static"  # Set absolute path for STATIC_ROOT
 
 # In development, serve static files through Django.
 if DEBUG:
-    from django.conf import settings
-    from django.conf.urls.static import static
-    STATICFILES_DIRS = [BASE_DIR / "static"]
+    STATICFILES_DIRS = [BASE_DIR / "static"]  # This is fine as long as it's not the same as STATIC_ROOT
 
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 
