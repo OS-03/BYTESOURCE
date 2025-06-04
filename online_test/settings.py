@@ -16,7 +16,7 @@ from pathlib import Path
 from .info import *
 original_translation.ugettext = original_translation.gettext
 import cloudinary
-import cloudinary_storage  # Make sure to install 'django-cloudinary-storage', not 'cloudinary-storage'
+import cloudinary_storage  
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +47,6 @@ ALLOWED_HOSTS = ["*", "0.0.0.0"]
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary_storage',
     "cloudinary",
     "mcq",
     "quiz",
