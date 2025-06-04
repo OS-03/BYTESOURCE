@@ -1,7 +1,6 @@
 from django.db import models
 from quiz.models import Question
 
-
 ANSWER_ORDER_OPTIONS = (("content", "Content"), ("none", "None"), ("random", "Random"))
 
 
@@ -59,8 +58,7 @@ class Answer(models.Model):
     content = models.CharField(
         max_length=1000,
         blank=False,
-        help_text="Enter the answer text that \
-                                            you want displayed",
+        help_text="Enter the answer text that you want displayed",
         verbose_name="Content",
     )
 

@@ -21,7 +21,6 @@ import django.dispatch
 from cloudinary.models import CloudinaryField
 csv_uploaded = django.dispatch.Signal(["user", "csv_file_list"])
 
-
 class CategoryManager(models.Manager):
 
     def new_category(self, category):
@@ -703,12 +702,6 @@ def csv_upload_post_save(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(csv_upload_post_save, sender=CSVUpload)
-
-
-from django.contrib.auth.models import User
-from django.db import models
-from cloudinary.models import CloudinaryField
-
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

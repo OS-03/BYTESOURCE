@@ -1,7 +1,4 @@
-import csv
-import os
-import io
-
+import csv , io , os
 from django.core.exceptions import ValidationError
 
 REQUIRED_HEADER = ["username", "email", "password", "first name", "last name"]

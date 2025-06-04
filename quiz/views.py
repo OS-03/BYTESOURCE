@@ -1,7 +1,7 @@
 
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render , redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import FormView
@@ -9,44 +9,22 @@ from django.contrib.auth.models import User
 from online_test import settings
 from .forms import QuestionForm
 from .models import Quiz, Category, Progress, Sitting, Question
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import EmailMessage, send_mail
-from django.views import View
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.views.decorators.csrf import *
-from django.urls import reverse_lazy
-from django.contrib.auth.views import PasswordResetView
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from .tokens import generate_token
-from django.contrib.auth.decorators import login_required
 from .models import Profile
 import logging
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.utils.http import urlsafe_base64_encode
-from django.utils.encoding import force_bytes
 from cloudinary.uploader import upload
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from cloudinary.uploader import upload
-from cloudinary.uploader import upload
-logger = logging.getLogger(__name__)
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_str
 
-
-
-
-
-
+logger = logging.getLogger(__name__)
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
