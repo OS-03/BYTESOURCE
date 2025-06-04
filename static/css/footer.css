@@ -1,0 +1,97 @@
+footer{
+    background-color: #a28be7;
+    padding: 5px;
+    align-self: center;
+    text-align: center;
+}
+  .footer-p{
+      padding-bottom:20%;
+  }
+  .footer-p:hover{
+      color:blueviolet;
+  }
+  .footer-p{
+      color:white;
+      padding-bottom:1%;
+      padding-left:100%;
+  }
+  .footer-p:hover{
+      color:blueviolet;
+  }
+  .footer-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #a28be7;
+  }
+  
+  .footer-content .footer-p {
+      margin-bottom: 10px;
+      font-size: 16px;
+  }
+  
+  .footer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center; /* Align the list items in the center */
+      margin-top: 20px; /* Add some space between the list and the social media buttons */
+      text-decoration: none;
+  }
+  .panel1{
+      display:flex;
+      flex-direction:row;
+      margin-right:2%;
+  }
+  .panel2{
+      margin-top:5%;
+      margin-left:20%;
+  }
+/* New CSS for the social media buttons */
+.social-media {
+    margin-left: 10px; /* Adjust as needed */
+}
+
+.social-media img {
+    height: 30px; /* Adjust as needed */
+}
+
+.footer-a{
+    color: azure;
+    padding-left:10%;
+}
+.footer-a:hover {
+    color: blueviolet;
+    text-decoration: none;
+  }
+/*social media buttons in footer*/
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    color: blueviolet;
+    text-decoration: none;
+}
+.fa-facebook {
+  color: white;
+}
+.fa-twitter {
+  color: white;
+}
+.fa-instagram {
+  color: white;
+}
+.aside-anchors:hover{
+            color:#a28be7;
+        }
+
