@@ -37,8 +37,7 @@
           {% if user.is_authenticated %}
           <li class="nav-item">
             <div class="dropdown d-flex">
-              <a
-                href="#"
+              <div
                 class="btn btn-white d-block link-dark text-decoration-none dropdown-toggle "
                 type="button"
                 id="dropdownUser1"
@@ -53,7 +52,7 @@
                   width="40"
                   height="40"
                 />&nbsp;{% trans "Hello" %}&nbsp;{{user.username}}{% trans "!" %}<span class="sr-only">(current)</span>
-              </a>
+            </div>
               <div
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
