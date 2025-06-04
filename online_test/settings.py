@@ -47,6 +47,7 @@ ALLOWED_HOSTS = ["*", "0.0.0.0"]
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     "cloudinary",
     "mcq",
     "quiz",
