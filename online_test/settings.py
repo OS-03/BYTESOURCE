@@ -16,7 +16,7 @@ from pathlib import Path
 from .info import *
 original_translation.ugettext = original_translation.gettext
 import cloudinary
-import cloudinary_storage
+import cloudinary_storage  # Make sure to install 'django-cloudinary-storage', not 'cloudinary-storage'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
