@@ -19,7 +19,6 @@ from django.urls import path, include
 from quiz.admin import custom_admin_site
 from django.conf import settings
 from django.conf.urls.static import static
-
 # from quiz.views import main_page
 
 
