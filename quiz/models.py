@@ -713,7 +713,7 @@ from cloudinary.models import CloudinaryField
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     signup_confirmation = models.BooleanField(default=False)
-    image = CloudinaryField('image', default='default.jpg')
+    image = CloudinaryField('image', default='https://res.cloudinary.com/dmf0l0i74/image/upload/v1745593402/ogsonegnvsdtgaif1px9.jpg')
 
     def __str__(self):
         return f'{self.user.username} Profile'

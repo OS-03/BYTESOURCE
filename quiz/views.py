@@ -1,4 +1,3 @@
-import random
 
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import PermissionDenied
@@ -7,7 +6,6 @@ from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
-from base64 import urlsafe_b64decode, urlsafe_b64encode
 from online_test import settings
 from .forms import QuestionForm
 from .models import Quiz, Category, Progress, Sitting, Question
@@ -24,13 +22,31 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from .tokens import generate_token
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 import logging
-from django import forms
-from django.http import HttpResponseRedirect
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from cloudinary.uploader import upload
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from cloudinary.uploader import upload
+from cloudinary.uploader import upload
+logger = logging.getLogger(__name__)
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import force_str
+
+
+
+
+
+
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
@@ -262,8 +278,6 @@ class QuizTake(FormView):
 def index(request):
     return render(request, "index.html", {})
 
-from .models import Profile
-
 def signup_user(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -275,23 +289,23 @@ def signup_user(request):
 
         if User.objects.filter(username=username):
             messages.error(request, "Username already exists! Please try another username.")
-            return redirect("auth/signup")
+            return redirect("signup")
 
         if User.objects.filter(email=email):
             messages.error(request, "Email already exists!")
-            return redirect("auth/signup")
+            return redirect("signup")
 
         if len(username) > 20:
             messages.error(request, "Username must be under 20 characters!")
-            return redirect("auth/signup")
+            return redirect("signup")
 
         if pass1 != pass2:
             messages.error(request, "Passwords didn't match!")
-            return redirect("auth/signup")
+            return redirect("signup")
 
         if not username.isalnum():
             messages.error(request, "Username must be alphanumeric!")
-            return redirect("auth/signup")
+            return redirect("signup")
 
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name = fname
@@ -300,7 +314,7 @@ def signup_user(request):
         myuser.save()
 
         # Create a Profile for the user
-        Profile.objects.create(user=myuser, signup_confirmation=False)
+        Profile.objects.get_or_create(user=myuser, defaults={"signup_confirmation": False})
 
         messages.success(
             request,
@@ -316,23 +330,45 @@ def signup_user(request):
 
         # Email Confirmation
         current_site = get_current_site(request)
-        email_subject = "Confirm your Email!"
-        message2 = render_to_string(
-            "layouts/email_confirmation.html",
-            {
-                "name": myuser.first_name,
-                "domain": current_site.domain,
-                "uid": urlsafe_b64encode(force_bytes(myuser.pk)),
-                "token": generate_token.make_token(myuser),
-            },
-        )
-        email = EmailMessage(email_subject, message2, settings.EMAIL_HOST_USER, [myuser.email])
+        uidb64 = urlsafe_base64_encode(force_bytes(myuser.pk))
+        token = default_token_generator.make_token(myuser)
+
+        mail_subject = 'Activate your account'
+        message = render_to_string('email_confirmation.html', {
+            'user': myuser,
+            'domain': current_site.domain,
+            'uid': uidb64,
+            'token': token,
+            })
+        to_email = myuser.email
+        email = EmailMessage(mail_subject, message, to=[to_email])
         email.send()
 
         return redirect("login")
 
     return render(request, "auth/signup.html")
 
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64)) 
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        if not user.is_active:
+            user.is_active = True
+            user.save()
+            messages.success(request, 'Email confirmed. You can now log in.')
+        else:
+            messages.info(request, 'Account already activated.')
+        return redirect('login') 
+    else:
+        messages.error(request, 'Activation link is invalid or expired!')
+        return redirect('signup')
+    
 def login_user(request):
 
     if request.method == "POST":
@@ -352,37 +388,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    # messages.success(request, 'You have been logged out!')
-    # print('logout function working')
     return redirect("login")
-
-
-def activate(request, uidb64, token):
-    try:
-        uid = force_bytes(urlsafe_b64decode(uidb64))
-        myuser = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        myuser = None
-
-    if myuser is not None and generate_token.check_token(myuser, token):
-        myuser.is_active = True
-        # user.profile.signup_confirmation = True
-        myuser.save()
-        login(request, myuser)
-        messages.success(request, "Your Account has been activated!!")
-        return redirect("base")
-    else:
-        return render(request, "activation_failed.html")
-
-from cloudinary.uploader import upload
-logger = logging.getLogger(__name__)
-
-from cloudinary.uploader import upload
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from cloudinary.uploader import upload
 
 @login_required
 def change_profile_image(request):

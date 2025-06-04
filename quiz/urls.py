@@ -1,6 +1,7 @@
 from django.urls import include, re_path, path
 from .views import *
 from . import views
+from quiz.views import activate 
 
 urlpatterns = [
     re_path(r"^$", view=index, name="index"),
@@ -67,4 +68,5 @@ urlpatterns = [
     ),
     re_path(r"^admin$", view=admin, name="admin"),
     re_path(r"^change_profile_image$", view=change_profile_image, name="change_profile_image"),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate')
 ]

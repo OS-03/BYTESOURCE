@@ -1,133 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins";
-    text-decoration: none !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  text-decoration: none !important;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .navbar {
-    z-index: 2;
-    position: fixed;
-    height: 10%;
-    width: 100%;
-    background-color: #232F3E;
-    padding-top: 2%;
-    /*Adjusted padding */
-    padding-bottom: 2%;
-    /* Adjusted padding */
+  z-index: 2;
+  position: fixed;
+  height: 10%;
+  width: 100%;
+  background-color: #232f3e;
+  padding-top: 2%;
+  /*Adjusted padding */
+  padding-bottom: 2%;
+  /* Adjusted padding */
 }
 
-.navhead{
-    display: flex;
-    justify-content:space-evenly;
-    list-style-type: none;
-    padding-left: 5%;
-    padding-right: 1%;
-    padding-top: 0.75%;
-    width: 100%;
+.navhead {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  padding-left: 5%;
+  padding-right: 1%;
+  padding-top: 0.75%;
+  width: 100%;
 }
-
 
 a {
-    text-decoration: none;
-    height: 100%;
-    display: flex-box;
-    align-items: center;
-    font-size: 15px;
-    line-height: 1.5;
+  text-decoration: none;
+  height: 100%;
+  display: flex-box;
+  align-items: center;
+  font-size: 15px;
+  line-height: 1.5;
 }
-
 
 .bgimage {
-    top: 6%;
-    height: 70%;
-    width: 100%;
-    background-image: url("/static/img/students.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  top: 6%;
+  height: 70%;
+  width: 100%;
+  background-image: url("/static/img/students.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-
-#sql, #cn,#os, #toc, #dsa{
-
+.subject-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
+  border-radius: 48px;
+  background-color: rgb(186, 186, 186);
+  border-color: black;
+  border-left: 15px solid #232f3e;
+  border-bottom: 15px solid #232f3e;
+  margin-bottom: 4%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+.subcont {
+  background-color: #d0c0f0;
+  display: flex;
+  flex-direction: row;
 }
 
-    
-    .subject-container {
-        display: flex;
-        flex-wrap: wrap;
-         gap:3rem;
-         justify-content: center;
-         box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
-         border-radius: 48px;
-         background-color: rgb(186, 186, 186);
-         border-color: black;
-         border-left: 15px solid #232F3E;
-         border-bottom: 15px solid #232F3E;
-         margin-bottom: 4%;
-         margin-left: 2.5%;
-         margin-right: 2.5%;
-    }
-    .subcont{
-        background-color: #d0c0f0;
-        display: flex;
-        flex-direction:row;
-        }
-    
-
-.course{
-    min-width:fit-content;
-    width: 40vw;
-    height: 11rem;
-    font-size: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 2rem;
-    background-color:white;
-    transition: 0.3s;
-    border-radius: 3rem;
+.course {
+  min-width: fit-content;
+  width: 40vw;
+  height: 11rem;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 3rem;
 }
 
 .course:hover {
-    background-color: hsl(255, 66%, 73%);
+  background-color: hsl(255, 66%, 73%);
 }
 
 #myBtn {
-    /* Hidden by default */
-    position: fixed;
-    /* Fixed/sticky position */
-    bottom: 2rem;
-    /* Place the button at the bottom of the page */
-    right: 2rem;
-    /* Place the button 30px from the right */
-    border: none;
-    /* Remove borders */
-    outline: none;
-    /* Remove outline */
-    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/330/671/small/69_Up.jpg");
-    background-size: cover;
-    cursor: pointer;
-    /* Add a mouse pointer on hover */
-    padding: 30px;
-    /* Some padding */
-    border-radius: 7rem;
-    /* Rounded corners */
-} 
-
-#myBtn:hover {
-    background-color: #555;
+  /* Hidden by default */
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 2rem;
+  /* Place the button at the bottom of the page */
+  right: 2rem;
+  /* Place the button 30px from the right */
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/330/671/small/69_Up.jpg");
+  background-size: cover;
+  cursor: pointer;
+  /* Add a mouse pointer on hover */
+  padding: 30px;
+  /* Some padding */
+  border-radius: 7rem;
+  /* Rounded corners */
 }
 
-
-
-
+#myBtn:hover {
+  background-color: #555;
+}
