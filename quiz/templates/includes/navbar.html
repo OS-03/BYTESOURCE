@@ -32,87 +32,56 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <ul class="navbar-nav ml-auto justify-content-fit-content">
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <div class="dropdown d-flex">
-              <div
-                class="btn btn-white d-block link-dark text-decoration-none dropdown-toggle "
-                type="button"
-                id="dropdownUser1"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                    src="{{ user.profile.image.url|default:'https://res.cloudinary.com/dmf0l0i74/image/upload/v1748318051/profile_pictures/You-have-the-patience-the-strength-and-the-passion-to-achieve-your-ambitions-your-goals-and-your-dreams.-All-you-have-to-do-now-is-try.-Candid-Blog_5.jpg' }}"
-                  alt="Profile Image"
-                  class="rounded-circle"
-                  width="40"
-                  height="40"
-                />&nbsp;{% trans "Hello" %}&nbsp;{{user.username}}{% trans "!" %}<span class="sr-only">(current)</span>
-            </div>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-                style="width: max-content; text-align: center; height: max-content; "
-              >
-                <a class="nav-link" href="{% url 'logout' %}">logout</a>
-                <a class="nav-link" href="{% url 'change_profile_image' %}">Change Profile Photo</a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-tem" style="color: rgb(140, 140, 140)">
-            <a href="{% url 'quiz_index' %}" class="nav-link">TakeQuiz</a>
-          </li>
-          <li class="nav-tem" style="color: rgb(140, 140, 140)">
-            <a href="{% url 'quiz_progress' %}" class="nav-link">Progress</a>
-          </li>
-
-          {% else %}
-          <li>
-            <div class="dropdown d-flex">
-              <a
-                href="#"
-                class="btn btn-white d-block link-dark text-decoration-none dropdown-toggle"
-                type="button"
-                id="dropdownUser1"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://res.cloudinary.com/dmf0l0i74/image/upload/v1730782673/yajurjdirvzi6smpzgnw.jpg"
-                  alt="Profile Image"
-                  class="rounded-circle"
-                  width="40"
-                  height="40"
-                />&nbsp;{% trans "Hello"%}&nbsp;{%trans "anonymous!"%}<span
-                  class="sr-only"
-                  >(current)</span
-                >
-
-                <div
-                  class="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                  style="width: 100%"
-                >
-                  <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </div>
-              </a>
-            </div>
-          </li>
-        </ul>
+      <ul class="navbar-nav ml-auto justify-content-fit-content">
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown d-flex">
+          <a
+            class="btn btn-white d-block link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="{{ user.profile.image.url|default:'https://res.cloudinary.com/dmf0l0i74/image/upload/v1748318051/profile_pictures/You-have-the-patience-the-strength-and-the-passion-to-achieve-your-ambitions-your-goals-and-your-dreams.-All-you-have-to-do-now-is-try.-Candid-Blog_5.jpg' }}"
+              alt="Profile Image"
+              class="rounded-circle"
+              width="40"
+              height="40"
+            />&nbsp;{% trans "Hello" %}&nbsp;{{user.username}}{% trans "!" %}<span class="sr-only">(current)</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownUser1" style="width: max-content; text-align: center; height: max-content;">
+            <li><a class="dropdown-item" href="{% url 'logout' %}">logout</a></li>
+            <li><a class="dropdown-item" href="{% url 'change_profile_image' %}">Change Profile Photo</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" style="color: rgb(140, 140, 140)">
+          <a href="{% url 'quiz_index' %}" class="nav-link">TakeQuiz</a>
+        </li>
+        <li class="nav-item" style="color: rgb(140, 140, 140)">
+          <a href="{% url 'quiz_progress' %}" class="nav-link">Progress</a>
+        </li>
+        {% else %}
+        <li class="nav-item dropdown d-flex">
+          <a
+            href="#"
+            class="btn btn-white d-block link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://res.cloudinary.com/dmf0l0i74/image/upload/v1730782673/yajurjdirvzi6smpzgnw.jpg"
+              alt="Profile Image"
+              class="rounded-circle"
+              width="40"
+              height="40"
+            />&nbsp;{% trans "Hello"%}&nbsp;{%trans "anonymous!"%}<span class="sr-only">(current)</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownUser2" style="width: 100%">
+            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+          </ul>
+        </li>
         {% endif %}
-
-        <ul class="navbar-nav ml-auto">
-          {% if user.is_authenticated %}
-          <li class="nav-item active">
-            <a class="nav-link"></a>
-          </li>
-          {% endif %}
-        </ul>
       </ul>
     </div>
   </div>
